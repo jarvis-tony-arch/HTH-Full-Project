@@ -5,6 +5,7 @@ import 'app/palette.dart';
 import 'providers/analysis_provider.dart';
 import 'providers/settings_provider.dart';
 import 'providers/tickets_provider.dart';
+import 'features/resolve/cases_store.dart';
 import 'services/api_service.dart';
 import 'screens/splash_screen.dart';
 
@@ -31,6 +32,7 @@ class HTHApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TicketsProvider()),
         ChangeNotifierProvider(create: (_) => AnalysisProvider()),
         ChangeNotifierProvider(create: (_) => SettingsProvider()),
+        ChangeNotifierProvider(create: (_) => CasesStore()..load()),
       ],
       child: MaterialApp(
         title: 'HTH Support AI',

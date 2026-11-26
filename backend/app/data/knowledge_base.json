@@ -1,0 +1,823 @@
+{
+  "meta": {
+    "version": 1,
+    "last_verified": "2026-11-26",
+    "policy": "Every phone number, email, URL, rule and rupee amount below was read on an official page listed in `sources`. Anything that could not be verified is null and listed in `unverified`; the app shows 'Check the official page' for it. Wait times marked basis='default' are our own sensible defaults, not legal deadlines."
+  },
+
+  "sources": {
+    "dgca_car_m4": {
+      "title": "DGCA CAR Section 3, Series M, Part IV, Rev. 4 dated 25 Jan 2023 (effective 15 Feb 2023): Facilities to be provided to passengers by airlines due to denied boarding, cancellation of flights and delays in flights",
+      "url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D",
+      "listing_url": "https://www.dgca.gov.in/digigov-portal/?dynamicPage=civilAviationRequirements/6/0/viewDynamicRulesReq",
+      "note": "DGCA CAR list checked 2026-11-26: Rev. 4 (25.01.2023) is the latest revision listed; no 2024-2026 revision found."
+    },
+    "irctc_refund_rules_2015": {
+      "title": "IRCTC: Refund Rules and TDR Filing w.e.f. 12-November-2015 (Authority: Railway Board letter TCII/2003/2015/Refund Policy/1 dated 06-Nov-2015; Gazette notification dated 04-Nov-2015)",
+      "url": "https://contents.irctc.co.in/en/REFUND%20RULES%20wef%2012-Nov-15.pdf"
+    },
+    "irctc_eticket_cancel": {
+      "title": "IRCTC: E-ticket cancellation and TDR help page",
+      "url": "https://contents.irctc.co.in/en/eticketCancel.html"
+    },
+    "railmadad": {
+      "title": "RailMadad, A Grievance Redressal Mechanism (Indian Railways)",
+      "url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp"
+    },
+    "pib_ecommerce_grievance": {
+      "title": "PIB, Ministry of Consumer Affairs, 20 Jul 2022: Consumer Protection (E-commerce) Rules, 2020 grievance officer must acknowledge within forty-eight hours and redress within one month",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+    },
+    "pib_ecommerce_amendment_2026": {
+      "title": "PIB, 10 Sep 2026: Consumer Protection (E-Commerce) (Amendment) Rules, 2026, in force from 1 Jan 2027 (complainant gets a copy of the complaint as recorded by the grievance officer)",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2308759"
+    },
+    "pib_edaakhil": {
+      "title": "PIB, 9 Feb 2024: e-Daakhil (edaakhil.nic.in) is the Consumer Commission online filing portal",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+    },
+    "nch_home": {
+      "title": "National Consumer Helpline",
+      "url": "https://consumerhelpline.gov.in/"
+    },
+    "rbi_tat_2019": {
+      "title": "RBI circular RBI/2019-20/67, DPSS.CO.PD No.629/02.01.014/2019-20 dated 20 Sep 2019: Harmonisation of TAT and customer compensation for failed transactions (effective 15 Oct 2019)",
+      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11693"
+    },
+    "rbi_cms": {
+      "title": "RBI Complaint Management System (Reserve Bank - Integrated Ombudsman Scheme)",
+      "url": "https://cms.rbi.org.in/"
+    },
+    "airsewa_home": {
+      "title": "AirSewa (initiative by Ministry of Civil Aviation)",
+      "url": "https://airsewa.gov.in/#/home"
+    },
+    "amazon_privacy": {
+      "title": "Amazon.in Privacy Notice (Grievance Officer section)",
+      "url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+    },
+    "flipkart_grievance": {
+      "title": "Flipkart Grievance Redressal Mechanism",
+      "url": "https://www.flipkart.com/pages/grievance-redressal-mechanism"
+    },
+    "flipkart_returns": {
+      "title": "Flipkart Returns Policy",
+      "url": "https://www.flipkart.com/pages/returnpolicy"
+    },
+    "myntra_terms": {
+      "title": "Myntra Terms of Use, clause 22 Grievance Officer",
+      "url": "https://www.myntra.com/termsofuse"
+    },
+    "ajio_terms": {
+      "title": "AJIO and AJIO Luxe Terms and Conditions, clauses 20-21",
+      "url": "https://www.ajio.com/help/termsAndCondition"
+    },
+    "meesho_terms": {
+      "title": "Meesho Terms and Conditions, clause 11 Communication / Consumer Protection Compliance",
+      "url": "https://www.meesho.com/legal/terms-conditions"
+    },
+    "indigo_contact": {
+      "title": "IndiGo Contact us (Customer Grievance Redressal)",
+      "url": "https://www.goindigo.in/contact-us.html"
+    },
+    "airindia_grievance": {
+      "title": "Air India Grievance Resolution",
+      "url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html"
+    },
+    "airindia_contact": {
+      "title": "Air India Contact Us",
+      "url": "https://www.airindia.com/in/en/contact-us.html"
+    },
+    "akasa_contact": {
+      "title": "Akasa Air Contact Us (includes Nodal Officer and Appellate Authority)",
+      "url": "https://www.akasaair.com/contact-us"
+    },
+    "spicejet_contact": {
+      "title": "SpiceJet Contact Us (corporate site, includes grievance procedure)",
+      "url": "https://corporate.spicejet.com/ContactUs.aspx"
+    }
+  },
+
+  "sections": {
+    "shopping": {
+      "title": "Shopping",
+      "subtitle": "Orders, clothes, refunds",
+      "companies": ["amazon", "flipkart", "myntra", "ajio", "meesho"],
+      "issues": ["refund_delay", "late_delivery", "wrong_or_damaged_item", "size_or_fit_return", "return_rejected", "payment_deducted_no_order"],
+      "examples": [
+        "Flipkart refund nahi aaya 10 din se",
+        "Myntra kurta size chota hai, return karna hai",
+        "Amazon order late hai aur box toota hua aaya"
+      ]
+    },
+    "travel": {
+      "title": "Travel",
+      "subtitle": "Flights and trains",
+      "companies": ["indigo", "air_india", "akasa_air", "spicejet", "indian_railways"],
+      "issues": ["flight_delay", "flight_cancellation", "denied_boarding", "baggage_issue", "train_late_not_travelled", "train_cancelled"],
+      "examples": [
+        "IndiGo flight 7 ghante late tha, khana bhi nahi diya",
+        "Air India cancelled my flight 2 hours before departure",
+        "Train 4 ghante late hai, abhi nikli nahi, refund chahiye"
+      ]
+    }
+  },
+
+  "companies": {
+    "amazon": {
+      "section": "shopping",
+      "name": "Amazon",
+      "aliases": ["amazon", "amazon.in", "amzn", "amazone", "amazan", "amzon"],
+      "help_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=202115230",
+      "customer_care_phone": null,
+      "customer_care_email": null,
+      "grievance_officer_name": "Saurabh Joshi",
+      "grievance_officer_email": "grievance-officer@amazon.in",
+      "grievance_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ",
+      "nodal_officer_email": null,
+      "source_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ",
+      "last_verified": "2026-11-26",
+      "notes": "Privacy Notice says the Grievance Officer is identified under the IT Act, 2000 and the Consumer Protection Act, 2019. Contact page requires sign-in, so no customer care number was verified."
+    },
+    "flipkart": {
+      "section": "shopping",
+      "name": "Flipkart",
+      "aliases": ["flipkart", "flip kart", "flipcart", "flipkrt", "fk"],
+      "help_url": "https://www.flipkart.com/helpcentre",
+      "customer_care_phone": null,
+      "customer_care_email": null,
+      "grievance_officer_name": "Mr Karthik R",
+      "grievance_officer_email": "grievance.officer@flipkart.com",
+      "grievance_officer_phone": "044-45614700",
+      "grievance_officer_hours": "Mon - Sat (9:00 - 18:00)",
+      "grievance_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism",
+      "nodal_officer_email": null,
+      "source_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism",
+      "last_verified": "2026-11-26",
+      "notes": "Grievance page says complaints are acknowledged within 48 hours with a unique ID."
+    },
+    "myntra": {
+      "section": "shopping",
+      "name": "Myntra",
+      "aliases": ["myntra", "mintra", "myntraa", "myntr"],
+      "help_url": "https://www.myntra.com/contactus",
+      "customer_care_phone": null,
+      "customer_care_email": null,
+      "grievance_officer_name": "Mr. Arshwaal Singh",
+      "grievance_officer_email": "customergrievance@myntra.com",
+      "grievance_officer_phone": "080-40011450",
+      "grievance_officer_hours": "Mon - Fri (9:00 - 18:00)",
+      "grievance_url": "https://www.myntra.com/termsofuse",
+      "nodal_officer_email": null,
+      "source_url": "https://www.myntra.com/termsofuse",
+      "last_verified": "2026-11-26",
+      "notes": "Terms of Use clause 22 lists the Grievance Officer under the Consumer Protection (E-Commerce) Rules, 2020 and says customer support is reached via myntra.com/contactus by selecting the order."
+    },
+    "ajio": {
+      "section": "shopping",
+      "name": "AJIO",
+      "aliases": ["ajio", "ajio.com", "ajiyo", "ajeo"],
+      "help_url": "https://www.ajio.com/help/termsAndCondition",
+      "customer_care_phone": null,
+      "customer_care_email": "customercare@ajio.com",
+      "grievance_officer_name": "Anirban Chatterjee",
+      "grievance_officer_email": "grievance.officer@ajio.com",
+      "grievance_url": "https://www.ajio.com/help/termsAndCondition",
+      "nodal_officer_name": "Gurpreet Jolly",
+      "nodal_officer_email": "nodal.officer@ajio.com",
+      "source_url": "https://www.ajio.com/help/termsAndCondition",
+      "last_verified": "2026-11-26",
+      "notes": "Run by Reliance Retail Limited. customercare@ajio.com appears in the Terms (account section)."
+    },
+    "meesho": {
+      "section": "shopping",
+      "name": "Meesho",
+      "aliases": ["meesho", "misho", "meesho app", "meeshow"],
+      "help_url": "https://www.meesho.com/",
+      "customer_care_phone": null,
+      "customer_care_email": null,
+      "grievance_officer_name": "Murthy SN",
+      "grievance_officer_email": "legalsupport@meesho.com",
+      "grievance_url": "https://www.meesho.com/legal/terms-conditions",
+      "nodal_officer_email": null,
+      "source_url": "https://www.meesho.com/legal/terms-conditions",
+      "last_verified": "2026-11-26",
+      "notes": "Clause 11.2 'Consumer Protection Compliance' lists legalsupport@meesho.com and Murthy SN as Nodal Officer / Grievance Officer."
+    },
+    "indigo": {
+      "section": "travel",
+      "mode": "flight",
+      "name": "IndiGo",
+      "aliases": ["indigo", "indi go", "6e", "goindigo", "indigo airlines", "indgo"],
+      "flight_code": "6E",
+      "help_url": "https://www.goindigo.in/contact-us.html",
+      "customer_care_phone": "0124-4973838 / 0124-6173838",
+      "customer_care_email": "Customer.experience@goindigo.in",
+      "nodal_officer_name": "Isha Gandhi",
+      "nodal_officer_email": "nodalofficer@goindigo.in",
+      "nodal_officer_phone": "0124-4973838 / 0124-6173838",
+      "appellate_authority_name": "Pratik Arjun Sen",
+      "appellate_authority_email": "appellateauthority@goindigo.in",
+      "grievance_url": "https://www.goindigo.in/contact-us.html",
+      "source_url": "https://www.goindigo.in/contact-us.html",
+      "last_verified": "2026-11-26"
+    },
+    "air_india": {
+      "section": "travel",
+      "mode": "flight",
+      "name": "Air India",
+      "aliases": ["air india", "airindia", "air-india", "ai flight", "maharaja"],
+      "flight_code": "AI",
+      "help_url": "https://www.airindia.com/in/en/contact-us/customer-support-portal.html",
+      "customer_care_phone": "+91 116 932 9333 / +91 116 932 9999",
+      "customer_care_email": null,
+      "nodal_officer_name": "Mr. Abdesh Kumar",
+      "nodal_officer_email": "nodalofficer@airindia.com",
+      "appellate_authority_name": "Ms. Bhavna Tiwari",
+      "appellate_authority_email": "appellateauthority@airindia.com",
+      "grievance_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html",
+      "source_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html",
+      "last_verified": "2026-11-26",
+      "notes": "Phone numbers copied exactly as displayed on airindia.com/in/en/contact-us.html. Air India asks passengers to raise a Case ID on its Customer Support Portal first, then quote it to the Nodal Officer."
+    },
+    "akasa_air": {
+      "section": "travel",
+      "mode": "flight",
+      "name": "Akasa Air",
+      "aliases": ["akasa", "akasa air", "aakasa", "akasaair", "qp"],
+      "flight_code": "QP",
+      "help_url": "https://www.akasaair.com/contact-us",
+      "customer_care_phone": "+91 9606 11 21 31",
+      "customer_care_email": null,
+      "nodal_officer_name": "Ms. Deepika Poojary",
+      "nodal_officer_email": "nodalofficer@akasaair.com",
+      "appellate_authority_name": "Ms. Ramita Vyas",
+      "appellate_authority_email": "appellateauthority@akasaair.com",
+      "grievance_url": "https://www.akasaair.com/contact-us",
+      "source_url": "https://www.akasaair.com/contact-us",
+      "last_verified": "2026-11-26",
+      "notes": "24x7 Akasa Care Center number. The page uses web forms instead of a customer care email."
+    },
+    "spicejet": {
+      "section": "travel",
+      "mode": "flight",
+      "name": "SpiceJet",
+      "aliases": ["spicejet", "spice jet", "spicejet airlines", "sg"],
+      "flight_code": "SG",
+      "help_url": "https://corporate.spicejet.com/ContactUs.aspx",
+      "customer_care_phone": "+91 (0)124 4983410 / +91 (0)124 7101600",
+      "customer_care_email": "custrelations@spicejet.com",
+      "nodal_officer_name": "Mr. Sachin Suri",
+      "nodal_officer_email": "nodalofficer@spicejet.com",
+      "nodal_officer_phone": "+91 124-3913939",
+      "appellate_authority_name": "Mr. Kamal Hingorani",
+      "appellate_authority_email": "appellateauthority@spicejet.com",
+      "grievance_url": "https://corporate.spicejet.com/ContactUs.aspx",
+      "source_url": "https://corporate.spicejet.com/ContactUs.aspx",
+      "last_verified": "2026-11-26",
+      "notes": "Read from SpiceJet's corporate contact page, which also contains some older material."
+    },
+    "indian_railways": {
+      "section": "travel",
+      "mode": "train",
+      "name": "Indian Railways (IRCTC)",
+      "aliases": ["irctc", "indian railways", "railway", "railways", "train", "rail", "tdr", "pnr"],
+      "help_url": "https://contents.irctc.co.in/en/eticketCancel.html",
+      "customer_care_phone": "139",
+      "customer_care_phone_label": "Shown on RailMadad as 139 'For Security/Medical Assistance'",
+      "customer_care_email": null,
+      "railmadad_url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp",
+      "tdr_url": "https://www.irctc.co.in/nget/train-search",
+      "tdr_menu_path": "IRCTC: menu 'Services' > 'File Ticket Deposit Receipt (TDR)'",
+      "grievance_url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp",
+      "source_url": "https://contents.irctc.co.in/en/eticketCancel.html",
+      "last_verified": "2026-11-26"
+    }
+  },
+
+  "authorities": {
+    "nch": {
+      "name": "National Consumer Helpline",
+      "phone": "1915",
+      "phone_alt": "1800114000",
+      "hours": "8AM to 8PM",
+      "whatsapp": "+918800001915",
+      "url": "https://consumerhelpline.gov.in/user/index.php",
+      "app": "NCH Mobile App",
+      "source": "nch_home"
+    },
+    "edaakhil": {
+      "name": "e-Daakhil (Consumer Commission online filing)",
+      "url": "https://edaakhil.nic.in",
+      "source": "pib_edaakhil"
+    },
+    "airsewa": {
+      "name": "AirSewa (Ministry of Civil Aviation)",
+      "url": "https://airsewa.gov.in/#/home",
+      "source": "airsewa_home",
+      "dgca_basis": "CAR Series M Part IV para 3.9.2: 'The passenger may file the grievance on Air Sewa App or Portal.'"
+    },
+    "railmadad": {
+      "name": "RailMadad",
+      "phone": "139",
+      "url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp",
+      "source": "railmadad"
+    },
+    "irctc_tdr": {
+      "name": "IRCTC TDR (Ticket Deposit Receipt)",
+      "url": "https://www.irctc.co.in/nget/train-search",
+      "menu_path": "Log in > menu 'Services' > 'File Ticket Deposit Receipt (TDR)'",
+      "source": "irctc_eticket_cancel"
+    },
+    "rbi_ombudsman": {
+      "name": "RBI Integrated Ombudsman (Complaint Management System)",
+      "phone": "14448",
+      "url": "https://cms.rbi.org.in/",
+      "source": "rbi_cms"
+    }
+  },
+
+  "rules": {
+    "ecommerce_grievance": {
+      "name": "Consumer Protection (E-Commerce) Rules, 2020",
+      "acknowledge_within_hours": 48,
+      "resolve_within_days": 30,
+      "resolve_within_text": "within one month from the date of receipt of the complaint",
+      "source": "pib_ecommerce_grievance",
+      "upcoming_change": "Amendment Rules, 2026 (from 1 Jan 2027): platform must give the complainant a copy of the complaint as recorded by the grievance officer.",
+      "upcoming_source": "pib_ecommerce_amendment_2026"
+    },
+
+    "rbi_failed_transactions": {
+      "name": "RBI TAT circular for failed transactions (20 Sep 2019)",
+      "compensation_per_day_inr": 100,
+      "compensation_is_automatic": true,
+      "cases": [
+        {
+          "id": "upi_merchant",
+          "label": "UPI payment to a shop/app: money debited but the merchant did not get the confirmation",
+          "auto_reversal_by": "T + 5 days",
+          "auto_reversal_days": 5,
+          "compensation": "₹100 per day if delay is beyond T + 5 days"
+        },
+        {
+          "id": "upi_p2p",
+          "label": "UPI transfer: account debited but the beneficiary account is not credited",
+          "auto_reversal_by": "T + 1 day",
+          "auto_reversal_days": 1,
+          "compensation": "₹100 per day if delay is beyond T + 1 day"
+        },
+        {
+          "id": "imps",
+          "label": "IMPS: account debited but the beneficiary account is not credited",
+          "auto_reversal_by": "T + 1 day",
+          "auto_reversal_days": 1,
+          "compensation": "₹100 per day if delay is beyond T + 1 day"
+        },
+        {
+          "id": "card_online",
+          "label": "Card payment online (card not present)",
+          "auto_reversal_by": null,
+          "auto_reversal_days": null,
+          "compensation": null,
+          "verified": false
+        }
+      ],
+      "notes": "T is the day of the transaction. Para 5: compensation is credited to the customer's account 'suo moto, without waiting for a complaint'.",
+      "source": "rbi_tat_2019"
+    },
+
+    "dgca_flight": {
+      "name": "DGCA CAR Section 3, Series M, Part IV (Rev. 4, effective 15 Feb 2023)",
+      "source": "dgca_car_m4",
+      "extraordinary_circumstances": "No compensation if caused by extraordinary circumstances beyond the airline's control, e.g. political instability, natural disaster, civil war, riot, flood, explosion, government order, strikes, ATC decisions, weather, security risks (paras 1.4, 1.5, 3.3.4, 3.4.4).",
+
+      "delay": {
+        "meals_thresholds": [
+          {"block_time_max_hours": 2.5, "delay_at_least_hours": 2, "para": "3.4.1(a)"},
+          {"block_time_min_exclusive_hours": 2.5, "block_time_max_hours": 5, "delay_at_least_hours": 3, "para": "3.4.1(b)"},
+          {"block_time_min_exclusive_hours": 5, "delay_at_least_hours": 4, "para": "3.4.1(c)"}
+        ],
+        "meals_condition": "Passenger checked in on time; free meals and refreshments in relation to waiting time (para 3.8.1(a)).",
+        "refund_or_alternate": {
+          "delay_more_than_hours": 6,
+          "domestic_only": true,
+          "offer": "Either an alternate flight within 6 hours or a full refund of the ticket",
+          "para": "3.4.2",
+          "exact_text": "When domestic flight is expected to be delayed for more than 6 hrs from the published scheduled time of departure or previously revised departure time (communicated more than 24 hours prior to original scheduled departure time), airlines shall offer an option of either an alternate flight within a period of 6 hours or full refund of ticket to the passenger."
+        },
+        "hotel": {
+          "delay_more_than_hours": 24,
+          "night_departure_delay_more_than_hours": 6,
+          "night_departure_window": ["20:00", "03:00"],
+          "offer": "Free hotel accommodation when necessary, including transfers (para 3.8.1(b))",
+          "para": "3.4.3"
+        },
+        "cash_compensation_for_delay_alone": false,
+        "cash_compensation_note": "The CAR pays cash compensation only for denied boarding (para 3.2.2) and cancellation (para 3.3.2), per para 3.7.1. A delay by itself does not carry cash compensation."
+      },
+
+      "cancellation": {
+        "notice_two_weeks_or_more": "Alternate flight or refund, as acceptable to the passenger (para 3.3.1).",
+        "notice_less_than_two_weeks_up_to_24h": "Alternate flight or refund of the ticket, as acceptable to the passenger (para 3.3.1).",
+        "notice_less_than_24h": "Alternate flight acceptable to the passenger, or compensation in addition to full refund (para 3.3.2).",
+        "compensation_by_block_time": [
+          {"block_time_max_hours": 1, "amount_inr": 5000, "rule": "INR 5,000 or booked one-way basic fare plus airline fuel charge, whichever is less"},
+          {"block_time_min_exclusive_hours": 1, "block_time_max_hours": 2, "amount_inr": 7500, "rule": "INR 7,500 or booked one-way basic fare plus airline fuel charge, whichever is less"},
+          {"block_time_min_exclusive_hours": 2, "amount_inr": 10000, "rule": "INR 10,000 or booked one-way basic fare plus airline fuel charge, whichever is less"}
+        ],
+        "also_applies_to": "Passengers who missed a connecting flight booked on the same ticket number of an airline (para 3.3.2).",
+        "airport_facilities": "Meals and refreshments while waiting for the alternate flight, if already reported for the original flight (para 3.3.2, 3.8.1(a)).",
+        "no_compensation_if": [
+          "Passenger did not give contact details (email or phone) at booking (para 3.3.3)",
+          "Extraordinary circumstances beyond the airline's control (para 3.3.4)"
+        ]
+      },
+
+      "denied_boarding": {
+        "alternate_within_1h": {"compensation": "None", "para": "3.2.2"},
+        "alternate_within_24h": {"percent_of_fare": 200, "cap_inr": 10000, "rule": "200% of booked one-way basic fare plus airline fuel charge, subject to maximum of INR 10,000", "para": "3.2.2(a)"},
+        "alternate_after_24h": {"percent_of_fare": 400, "cap_inr": 20000, "rule": "400% of booked one-way basic fare plus airline fuel charge, subject to maximum of INR 20,000", "para": "3.2.2(b)"},
+        "no_alternate_opted": {"percent_of_fare": 400, "cap_inr": 20000, "rule": "Refund of full value of ticket and compensation equal to 400% of booked one-way basic fare plus airline fuel charge, subject to maximum of INR 20,000", "para": "3.2.2(c)"},
+        "condition": "Applies when boarding is refused against the passenger's will because of overbooking, after presenting for boarding on time with a confirmed ticket (paras 2.6, 3.2.1)."
+      },
+
+      "baggage": {
+        "verified": false,
+        "note": "Baggage loss/damage limits are not part of this CAR and were not verified today. The app only gives the complaint route."
+      },
+
+      "redressal": "Complain to the airline first; then file on AirSewa; if still unhappy, any statutory body/court (paras 3.9.1-3.9.3). Each airline must appoint a Nodal Officer and Appellate Authority (para 3.10.4). The CAR sets no fixed reply deadline for them."
+    },
+
+    "railway_refund": {
+      "name": "Indian Railways refund rules w.e.f. 12 Nov 2015 (IRCTC)",
+      "source": "irctc_refund_rules_2015",
+      "train_late": {
+        "late_more_than_hours": 3,
+        "applies_to": "Reserved, RAC and wait-listed tickets, journey not undertaken",
+        "measured_from": "scheduled departure of the train from the station commencing journey",
+        "refund": "Full fare, no cancellation charge or clerkage",
+        "eticket_condition": "TDR filed online before the actual departure of the train",
+        "iticket_condition": "Ticket surrendered up to the actual departure of the train",
+        "after_departure": "No refund of fare shall be admissible",
+        "clause": "6"
+      },
+      "train_cancelled": {
+        "eticket": "Automatic full refund of fare on confirmed or RAC e-tickets, credited to the account used for booking; online cancellation or TDR not required",
+        "iticket": "Ticket can be cancelled up to 72 hrs after the scheduled departure of the train at any computerized reservation counter",
+        "clause": "5"
+      },
+      "booking_failed_money_debited": "If amount is debited and ticket not issued, IRCTC refunds the entire fare and IRCTC convenience fee electronically; bank/card transaction charges are likely to be forfeited.",
+      "tdr_general": "For confirmed e-tickets not cancelled or TDR not filed up to four hours before scheduled departure, no refund is admissible (except special cases such as late running).",
+      "tdr_general_source": "irctc_eticket_cancel"
+    }
+  },
+
+  "issues": {
+    "refund_delay": {
+      "section": "shopping",
+      "title": "Refund not received",
+      "summary": "Your refund hasn't reached you yet",
+      "keywords": ["refund", "money back", "not refunded", "refund not received", "refund pending", "paisa wapas", "paise wapas", "refund nahi", "refund nhi", "refund kab"],
+      "in_app_steps": [
+        "Open the app and go to your orders",
+        "Pick the order and open its refund details",
+        "Note the refund ID or date shown, then tap Help to raise the issue"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "ladder": "shopping"
+    },
+    "late_delivery": {
+      "section": "shopping",
+      "title": "Order late or not delivered",
+      "summary": "Your order hasn't arrived",
+      "keywords": ["not delivered", "not arrived", "late delivery", "delayed", "order late", "where is my order", "order nahi aya", "order nhi aaya", "delivery nahi", "abhi tak nahi aaya"],
+      "in_app_steps": [
+        "Open the app and go to your orders",
+        "Pick the order and check the tracking status",
+        "Tap Help on that order and choose the delivery problem"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "ladder": "shopping"
+    },
+    "wrong_or_damaged_item": {
+      "section": "shopping",
+      "title": "Wrong or damaged item",
+      "summary": "You got the wrong item or it was damaged",
+      "keywords": ["wrong item", "damaged", "broken", "defective", "different product", "toota", "tuta", "tooti", "kharab", "galat item", "galat saman", "fake", "used product", "torn", "phati", "phata", "faded", "stained", "hole"],
+      "in_app_steps": [
+        "Take clear photos of the item, the box and the label",
+        "Open the app, go to your orders and pick the item",
+        "Choose Return or Replace and select 'damaged' or 'wrong item'"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "ladder": "shopping"
+    },
+    "size_or_fit_return": {
+      "section": "shopping",
+      "title": "Clothes don't fit",
+      "summary": "The clothes don't fit and you want to return or exchange them",
+      "keywords": ["size", "fit", "too small", "too big", "tight", "loose", "exchange", "chota", "bada", "size chota", "fitting"],
+      "in_app_steps": [
+        "Keep the tags on and the item unused",
+        "Open the app, go to your orders and pick the item",
+        "Choose Return or Exchange and select the size reason"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "return_window_days": {
+        "flipkart": {"days": 10, "category": "Lifestyle: Watch, T-Shirt, Footwear...", "source": "flipkart_returns"}
+      },
+      "ladder": "shopping"
+    },
+    "return_rejected": {
+      "section": "shopping",
+      "title": "Return or refund rejected",
+      "summary": "Your return was rejected",
+      "keywords": ["return rejected", "return denied", "return not accepted", "refused return", "return cancel", "return reject", "pickup cancelled", "return nahi le rahe"],
+      "in_app_steps": [
+        "Open the order and read the reason given for rejecting the return",
+        "Save screenshots of the order, the rejection and any photos",
+        "Tap Help on that order and ask for the rejection to be reviewed"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "ladder": "shopping"
+    },
+    "payment_deducted_no_order": {
+      "section": "shopping",
+      "title": "Money deducted but no order",
+      "summary": "Money was taken but no order was placed",
+      "keywords": ["money deducted", "amount deducted", "payment deducted", "debited", "order not placed", "payment failed", "paise kat gaye", "paisa kat gaya", "kat gaya", "charged but no order"],
+      "in_app_steps": [
+        "Check your orders list to confirm no order was created",
+        "Note the transaction ID (UTR) from your bank or UPI app",
+        "Tap Help in the shopping app and report the failed payment"
+      ],
+      "steps_verified": false,
+      "expected_days": null,
+      "bank_route": {
+        "title": "Raise a dispute in your bank or UPI app",
+        "instructions": "In your UPI app or bank app, open the transaction and choose 'Raise dispute' or 'Report issue'. Under RBI rules a failed UPI merchant payment must be auto-reversed within T + 5 days, with ₹100 per day compensation after that, paid automatically.",
+        "rule": "rbi_failed_transactions",
+        "escalate_to": "rbi_ombudsman"
+      },
+      "ladder": "shopping"
+    },
+
+    "flight_delay": {
+      "section": "travel",
+      "mode": "flight",
+      "title": "Flight delayed",
+      "summary": "Your flight was delayed",
+      "keywords": ["delay", "delayed", "late", "ghante late", "hours late", "late tha", "late hai", "waiting at airport"],
+      "ladder": "flight",
+      "rule": "dgca_flight.delay"
+    },
+    "flight_cancellation": {
+      "section": "travel",
+      "mode": "flight",
+      "title": "Flight cancelled",
+      "summary": "Your flight was cancelled",
+      "keywords": ["cancelled", "canceled", "cancel ho gayi", "cancel kar di", "flight cancel", "cancellation"],
+      "ladder": "flight",
+      "rule": "dgca_flight.cancellation"
+    },
+    "denied_boarding": {
+      "section": "travel",
+      "mode": "flight",
+      "title": "Not allowed to board",
+      "summary": "You were not allowed to board",
+      "keywords": ["denied boarding", "not allowed to board", "offloaded", "overbooked", "boarding denied", "board nahi karne diya", "seat nahi di"],
+      "ladder": "flight",
+      "rule": "dgca_flight.denied_boarding"
+    },
+    "baggage_issue": {
+      "section": "travel",
+      "mode": "flight",
+      "title": "Baggage lost or damaged",
+      "summary": "Your bag was lost, delayed or damaged",
+      "keywords": ["baggage", "luggage", "bag lost", "bag damaged", "bag missing", "suitcase", "bag nahi mila", "saman nahi mila", "bag toota"],
+      "ladder": "flight",
+      "rule": "dgca_flight.baggage"
+    },
+    "train_late_not_travelled": {
+      "section": "travel",
+      "mode": "train",
+      "title": "Train late, didn't travel",
+      "summary": "Your train is running late and you don't want to travel",
+      "keywords": ["train late", "train delayed", "running late", "ghante late", "train late hai", "not travelling", "didn't travel", "tdr"],
+      "ladder": "train_refund",
+      "rule": "railway_refund.train_late"
+    },
+    "train_cancelled": {
+      "section": "travel",
+      "mode": "train",
+      "title": "Train cancelled",
+      "summary": "Your train was cancelled",
+      "keywords": ["train cancelled", "train canceled", "train cancel", "train radd"],
+      "ladder": "train_refund",
+      "rule": "railway_refund.train_cancelled"
+    }
+  },
+
+  "ladders": {
+    "shopping": [
+      {
+        "level": 1,
+        "id": "in_app",
+        "title": "Ask in the app",
+        "channel": "app",
+        "contact": {"type": "url", "field": "help_url"},
+        "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+        "wait_hours_before_next": 48,
+        "wait_basis": "default"
+      },
+      {
+        "level": 2,
+        "id": "customer_care",
+        "title": "Contact customer care",
+        "channel": "phone_or_email",
+        "contact": {"type": "company", "fields": ["customer_care_phone", "customer_care_email", "help_url"]},
+        "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+        "wait_hours_before_next": 48,
+        "wait_basis": "default"
+      },
+      {
+        "level": 3,
+        "id": "grievance_officer",
+        "title": "Write to the Grievance Officer",
+        "channel": "email",
+        "contact": {"type": "company", "fields": ["grievance_officer_email", "grievance_officer_phone"]},
+        "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+        "wait_hours_before_next": 720,
+        "acknowledge_within_hours": 48,
+        "wait_basis": "rule",
+        "rule": "ecommerce_grievance"
+      },
+      {
+        "level": 4,
+        "id": "nch",
+        "title": "Complain to the National Consumer Helpline",
+        "channel": "phone_or_web",
+        "contact": {"type": "authority", "id": "nch"},
+        "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+        "wait_hours_before_next": 720,
+        "wait_basis": "default"
+      },
+      {
+        "level": 5,
+        "id": "edaakhil",
+        "title": "File a consumer case on e-Daakhil",
+        "channel": "web",
+        "contact": {"type": "authority", "id": "edaakhil"},
+        "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+        "wait_hours_before_next": null,
+        "wait_basis": "final"
+      }
+    ],
+    "bank": [
+      {
+        "level": 1,
+        "id": "bank_dispute",
+        "title": "Raise a dispute in your bank or UPI app",
+        "channel": "app",
+        "contact": {"type": "none"},
+        "instructions": "Open the transaction in your UPI or bank app and choose 'Raise dispute'. Keep the complaint number.",
+        "wait_hours_before_next": 720,
+        "wait_basis": "default"
+      },
+      {
+        "level": 2,
+        "id": "rbi_ombudsman",
+        "title": "Complain to the RBI Ombudsman",
+        "channel": "phone_or_web",
+        "contact": {"type": "authority", "id": "rbi_ombudsman"},
+        "instructions": "File on the RBI complaint portal or call 14448, quoting your bank complaint number.",
+        "wait_hours_before_next": null,
+        "wait_basis": "final"
+      }
+    ],
+    "flight": [
+      {
+        "level": 1,
+        "id": "airline_care",
+        "title": "Contact airline customer care",
+        "channel": "phone_or_email",
+        "contact": {"type": "company", "fields": ["customer_care_phone", "customer_care_email", "help_url"]},
+        "instructions": "Call or write to the airline. Quote your PNR and flight number, and keep the complaint number.",
+        "wait_hours_before_next": 72,
+        "wait_basis": "default"
+      },
+      {
+        "level": 2,
+        "id": "nodal_officer",
+        "title": "Write to the airline's Nodal Officer",
+        "channel": "email",
+        "contact": {"type": "company", "fields": ["nodal_officer_email", "nodal_officer_phone"]},
+        "instructions": "Email the Nodal Officer with your PNR and complaint number. DGCA requires every airline to have one.",
+        "wait_hours_before_next": 168,
+        "wait_basis": "default",
+        "rule": "dgca_flight"
+      },
+      {
+        "level": 3,
+        "id": "appellate_authority",
+        "title": "Appeal to the Appellate Authority",
+        "channel": "email",
+        "contact": {"type": "company", "fields": ["appellate_authority_email"]},
+        "instructions": "If the Nodal Officer's reply doesn't fix it, appeal to the Appellate Authority.",
+        "wait_hours_before_next": 168,
+        "wait_basis": "default",
+        "rule": "dgca_flight",
+        "skip_if_missing": true
+      },
+      {
+        "level": 4,
+        "id": "airsewa",
+        "title": "File on AirSewa",
+        "channel": "web",
+        "contact": {"type": "authority", "id": "airsewa"},
+        "instructions": "File your grievance on AirSewa (Ministry of Civil Aviation).",
+        "wait_hours_before_next": 360,
+        "wait_basis": "default"
+      },
+      {
+        "level": 5,
+        "id": "nch",
+        "title": "Complain to the National Consumer Helpline",
+        "channel": "phone_or_web",
+        "contact": {"type": "authority", "id": "nch"},
+        "instructions": "Call 1915 or file online with your PNR, dates and replies so far.",
+        "wait_hours_before_next": 720,
+        "wait_basis": "default"
+      },
+      {
+        "level": 6,
+        "id": "edaakhil",
+        "title": "File a consumer case on e-Daakhil",
+        "channel": "web",
+        "contact": {"type": "authority", "id": "edaakhil"},
+        "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+        "wait_hours_before_next": null,
+        "wait_basis": "final"
+      }
+    ],
+    "train_refund": [
+      {
+        "level": 1,
+        "id": "tdr_or_railmadad",
+        "title": "File a TDR on IRCTC (refund) or complain on RailMadad",
+        "channel": "web",
+        "contact": {"type": "authority", "id": "irctc_tdr", "alt_authority": "railmadad"},
+        "instructions": "For a refund, log in to IRCTC and choose Services > File Ticket Deposit Receipt (TDR). For any other complaint, use RailMadad or call 139.",
+        "wait_hours_before_next": 720,
+        "wait_basis": "default"
+      },
+      {
+        "level": 2,
+        "id": "nch",
+        "title": "Complain to the National Consumer Helpline",
+        "channel": "phone_or_web",
+        "contact": {"type": "authority", "id": "nch"},
+        "instructions": "Call 1915 or file online with your PNR, TDR number and dates.",
+        "wait_hours_before_next": 720,
+        "wait_basis": "default"
+      },
+      {
+        "level": 3,
+        "id": "edaakhil",
+        "title": "File a consumer case on e-Daakhil",
+        "channel": "web",
+        "contact": {"type": "authority", "id": "edaakhil"},
+        "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+        "wait_hours_before_next": null,
+        "wait_basis": "final"
+      }
+    ]
+  },
+
+  "unverified": [
+    {"item": "Amazon customer care phone and email", "reason": "Amazon contact page requires sign-in"},
+    {"item": "Flipkart customer care phone and email", "reason": "Help centre only shows in-app help; the only number shown is the grievance officer's"},
+    {"item": "Myntra customer care phone and email", "reason": "Not shown on public pages; support is via myntra.com/contactus"},
+    {"item": "AJIO customer care phone", "reason": "Not on the Terms page; other AJIO pages refuse automated reads"},
+    {"item": "Meesho customer care phone and email", "reason": "Help pages did not load"},
+    {"item": "Air India customer care email", "reason": "Air India uses its Customer Support Portal instead"},
+    {"item": "Akasa Air customer care email", "reason": "Akasa uses web forms instead"},
+    {"item": "Nodal Officer phone for Air India and Akasa Air (IndiGo and SpiceJet verified)", "reason": "Not published on their pages"},
+    {"item": "Exact in-app menu paths for each shopping platform", "reason": "Platforms only show these after login; app shows general steps marked as such"},
+    {"item": "Refund timelines (expected_days) for all shopping platforms", "reason": "Not stated on the public pages that loaded"},
+    {"item": "Return windows for clothing on Amazon, Myntra, AJIO, Meesho", "reason": "Return policy pages did not load or did not state it (Flipkart: 10 days for Lifestyle, verified)"},
+    {"item": "RBI timeline for failed online card payments (card not present)", "reason": "Table cell blank in RBI HTML; PDF blocked by CAPTCHA"},
+    {"item": "RBI Ombudsman: '30 days after complaining to the bank' condition", "reason": "Not on the pages read; scheme page now titled 2026 scheme"},
+    {"item": "Reply deadlines for airline Nodal Officer / Appellate Authority, AirSewa and NCH", "reason": "No fixed deadline in DGCA CAR; app uses defaults marked 'default'"},
+    {"item": "Flight baggage loss/damage compensation limits", "reason": "Not in DGCA CAR M-IV; not verified today"},
+    {"item": "139 as Railways' integrated helpline for all complaints", "reason": "RailMadad page labels 139 'For Security/Medical Assistance'"},
+    {"item": "e-Daakhil filing fees and commission value limits", "reason": "edaakhil.nic.in and consumeraffairs.nic.in could not be reached"}
+  ]
+}

@@ -9,7 +9,15 @@ class ApiService {
   static String baseUrl = 'https://hth-backend-5q9g.onrender.com';
   static const String _prefKey = 'backend_url';
 
+  /// Optional build-time override for local testing, e.g.
+  /// flutter run --dart-define=API_URL=http://10.0.2.2:8000
+  static const String _buildOverride = String.fromEnvironment('API_URL');
+
   static Future<void> load() async {
+    if (_buildOverride.isNotEmpty) {
+      baseUrl = _buildOverride;
+      return;
+    }
     final prefs = await SharedPreferences.getInstance();
     baseUrl = prefs.getString(_prefKey) ?? baseUrl;
   }

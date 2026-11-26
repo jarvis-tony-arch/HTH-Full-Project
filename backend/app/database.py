@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+
+load_dotenv()  # reads backend/.env locally; Render sets DATABASE_URL directly
 
 SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL")
 

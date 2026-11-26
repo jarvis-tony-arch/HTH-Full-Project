@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../core/theme.dart';
+import '../features/resolve/home_screen.dart';
 import 'main_shell.dart';
 import 'onboarding_screen.dart';
+
+/// Old entry point, kept for the "Company triage mode" link on Home.
+/// These screens keep the app's original dark theme.
+Future<void> openTriageMode(BuildContext context) async {
+  final prefs = await SharedPreferences.getInstance();
+  final seen = prefs.getBool('onboarded') ?? false;
+  if (!context.mounted) return;
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (_) => AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      child: seen ? const MainShell() : const OnboardingScreen(),
+    ),
+  ));
+}
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -45,23 +61,24 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
     _controller.forward();
-    Future.delayed(const Duration(milliseconds: 3200), _goHome);
+    Future.delayed(const Duration(milliseconds: 1200), _goHome);
   }
 
-    Future<void> _goHome() async {
-    final prefs = await SharedPreferences.getInstance();
-    final seen = prefs.getBool('onboarded') ?? false;
+  /// The simple "get help" Home is the front door now. The old company
+  /// triage mode (onboarding + MainShell) is one small link away on Home.
+  Future<void> _goHome() async {
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (_, __, ___) =>
-            seen ? const MainShell() : const OnboardingScreen(),
+            Theme(data: AppTheme.light, child: const ResolveHomeScreen()),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
-        transitionDuration: const Duration(milliseconds: 700),
+        transitionDuration: const Duration(milliseconds: 350),
       ),
     );
   }
+
 
   @override
   void dispose() {

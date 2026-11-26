@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.analyze import router as analyze_router
 from app.routes.tickets import router as tickets_router
+from app.routes.resolve import router as resolve_router
 from app.database import engine, Base
 
 # Create the database tables automatically on startup
@@ -22,6 +23,7 @@ app.add_middleware(
 
 app.include_router(analyze_router)
 app.include_router(tickets_router)
+app.include_router(resolve_router)
 
 @app.get("/health")
 async def health():

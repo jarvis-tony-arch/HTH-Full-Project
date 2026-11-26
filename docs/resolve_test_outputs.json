@@ -1,0 +1,1670 @@
+{
+  "shopping_english": {
+    "input": "My Amazon refund of Rs 2499 for order 403-1234567-1234567 has not come for 12 days",
+    "status": 200,
+    "seconds": 0.04,
+    "response": {
+      "section": "shopping",
+      "company": "amazon",
+      "company_name": "Amazon",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "refund_delay",
+          "title": "Refund not received",
+          "summary": "Your Amazon refund hasn't arrived after 12 days",
+          "confidence": 0.77,
+          "xai_reasons": [
+            "You wrote \"My Amazon refund of Rs 2499 for\", so this looks like: refund not received",
+            "You mentioned \"amazon\", so we picked Amazon",
+            "We found these details: order ID: 403-1234567-1234567, amount: 2499, days waiting: 12",
+            "We're 77% sure about this",
+            "You've been waiting about 12 days, so start with customer care and quote the order. If they don't fix it in 48 hours, go to the Grievance Officer.",
+            "Marked medium priority because the amount is ₹2,499, you've waited 12 days"
+          ],
+          "entities": {
+            "order_id": "403-1234567-1234567",
+            "amount": "2499",
+            "days_waiting": "12"
+          },
+          "urgency": "medium",
+          "entitlements": [
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 2,
+          "start_reason": "You've been waiting about 12 days, so start with customer care and quote the order. If they don't fix it in 48 hours, go to the Grievance Officer.",
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.amazon.in/gp/help/customer/display.html?nodeId=202115230",
+                "verified": true,
+                "source_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": true
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.amazon.in/gp/help/customer/display.html?nodeId=202115230",
+                "verified": true,
+                "source_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "grievance-officer@amazon.in",
+                "verified": true,
+                "source_url": "https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "grievance-officer@amazon.in",
+            "subject": "Complaint: Refund not received (Order 403-1234567-1234567)",
+            "body": "Dear Amazon team,\n\nI am writing to complain that the refund for my order has not been credited to me.\n\nDetails:\n- Order ID: 403-1234567-1234567\n- Amount: ₹2,499\n- I have been waiting for about 12 days\n\nI have already raised this with your team ([Ticket / complaint number]) but it has not been resolved.\n\nPlease credit the full refund to my original payment method immediately and confirm the date.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "shopping_hinglish": {
+    "input": "flipkart pe order kiya tha 10 din se nahi aaya, customer care ko call kiya koi jawab nahi",
+    "status": 200,
+    "seconds": 0.05,
+    "response": {
+      "section": "shopping",
+      "company": "flipkart",
+      "company_name": "Flipkart",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "late_delivery",
+          "title": "Order late or not delivered",
+          "summary": "Your Flipkart order hasn't arrived after 10 days",
+          "confidence": 0.97,
+          "xai_reasons": [
+            "You wrote \"not arrived\", so this looks like: order late or not delivered",
+            "You mentioned \"flipkart\", so we picked Flipkart",
+            "We found these details: days waiting: 10",
+            "We're 97% sure about this",
+            "You already tried \"contact customer care\" and they haven't replied, so we've moved you to the next step.",
+            "Marked medium priority because they aren't replying, you've waited 10 days"
+          ],
+          "entities": {
+            "days_waiting": "10"
+          },
+          "urgency": "medium",
+          "entitlements": [
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 3,
+          "start_reason": "You already tried \"contact customer care\" and they haven't replied, so we've moved you to the next step.",
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.flipkart.com/helpcentre",
+                "verified": true,
+                "source_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": true
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.flipkart.com/helpcentre",
+                "verified": true,
+                "source_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": true
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "grievance.officer@flipkart.com",
+                "verified": true,
+                "source_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism"
+              },
+              "other_contacts": [
+                {
+                  "kind": "phone",
+                  "label": "Call the Grievance Officer",
+                  "value": "044-45614700",
+                  "verified": true,
+                  "source_url": "https://www.flipkart.com/pages/grievance-redressal-mechanism"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "grievance.officer@flipkart.com",
+            "subject": "Complaint: Order late or not delivered",
+            "body": "Dear Flipkart team,\n\nI am writing to complain that my order has not been delivered.\n\nDetails:\n- Order ID: [Order ID]\n- Amount: [Amount]\n- I have been waiting for about 10 days\n\nI have already raised this with your team ([Ticket / complaint number]) but it has not been resolved.\n\nUnder the Consumer Protection (E-Commerce) Rules, 2020, the Grievance Officer must acknowledge this complaint within 48 hours and resolve it within one month of receipt.\n\nPlease deliver the order immediately or cancel it and refund me in full.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "clothing_size_return": {
+    "input": "Myntra kurta size chota hai, return karna hai",
+    "status": 200,
+    "seconds": 0.02,
+    "response": {
+      "section": "shopping",
+      "company": "myntra",
+      "company_name": "Myntra",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "size_or_fit_return",
+          "title": "Clothes don't fit",
+          "summary": "Your Myntra clothes don't fit and need a return or exchange",
+          "confidence": 0.95,
+          "xai_reasons": [
+            "You wrote \"Myntra kurta size chota hai, return\", so this looks like: clothes don't fit",
+            "You mentioned \"myntra\", so we picked Myntra",
+            "We're 95% sure about this"
+          ],
+          "entities": {},
+          "urgency": "low",
+          "entitlements": [
+            {
+              "text": "Check the return window on your order page. We couldn't verify it for this store",
+              "status": "info",
+              "basis": "",
+              "source_url": null
+            },
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.myntra.com/contactus",
+                "verified": true,
+                "source_url": "https://www.myntra.com/termsofuse"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.myntra.com/contactus",
+                "verified": true,
+                "source_url": "https://www.myntra.com/termsofuse"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "customergrievance@myntra.com",
+                "verified": true,
+                "source_url": "https://www.myntra.com/termsofuse"
+              },
+              "other_contacts": [
+                {
+                  "kind": "phone",
+                  "label": "Call the Grievance Officer",
+                  "value": "080-40011450",
+                  "verified": true,
+                  "source_url": "https://www.myntra.com/termsofuse"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "customergrievance@myntra.com",
+            "subject": "Complaint: Clothes don't fit",
+            "body": "Dear Myntra team,\n\nI am writing to request a return or exchange because the clothing I received does not fit.\n\nDetails:\n- Order ID: [Order ID]\n- Amount: [Amount]\n\nPlease arrange a pickup and an exchange for the correct size or a full refund.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "multi_issue": {
+    "input": "Meesho order late aaya aur saree phati hui thi, refund bhi nahi mila 1299 ka",
+    "status": 200,
+    "seconds": 0.03,
+    "response": {
+      "section": "shopping",
+      "company": "meesho",
+      "company_name": "Meesho",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "late_delivery",
+          "title": "Order late or not delivered",
+          "summary": "Your Meesho order is late",
+          "confidence": 0.97,
+          "xai_reasons": [
+            "You wrote \"Meesho order late aaya aur saree\", so this looks like: order late or not delivered",
+            "You mentioned \"meesho\", so we picked Meesho",
+            "We found these details: amount: 1299",
+            "We're 97% sure about this",
+            "Marked medium priority because the amount is ₹1,299"
+          ],
+          "entities": {
+            "amount": "1299"
+          },
+          "urgency": "medium",
+          "entitlements": [
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "legalsupport@meesho.com",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "legalsupport@meesho.com",
+            "subject": "Complaint: Order late or not delivered",
+            "body": "Dear Meesho team,\n\nI am writing to complain that my order has not been delivered.\n\nDetails:\n- Order ID: [Order ID]\n- Amount: ₹1,299\n\nPlease deliver the order immediately or cancel it and refund me in full.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        },
+        {
+          "issue_type": "refund_delay",
+          "title": "Refund not received",
+          "summary": "Your Meesho refund hasn't arrived",
+          "confidence": 0.77,
+          "xai_reasons": [
+            "You wrote \"phati hui thi, refund bhi nahi mila\", so this looks like: refund not received",
+            "You mentioned \"meesho\", so we picked Meesho",
+            "We found these details: amount: 1299",
+            "We're 77% sure about this",
+            "Marked medium priority because the amount is ₹1,299"
+          ],
+          "entities": {
+            "amount": "1299"
+          },
+          "urgency": "medium",
+          "entitlements": [
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "legalsupport@meesho.com",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "legalsupport@meesho.com",
+            "subject": "Complaint: Refund not received",
+            "body": "Dear Meesho team,\n\nI am writing to complain that the refund for my order has not been credited to me.\n\nDetails:\n- Order ID: [Order ID]\n- Amount: ₹1,299\n\nPlease credit the full refund to my original payment method immediately and confirm the date.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        },
+        {
+          "issue_type": "wrong_or_damaged_item",
+          "title": "Wrong or damaged item",
+          "summary": "Your Meesho order came wrong or damaged",
+          "confidence": 0.72,
+          "xai_reasons": [
+            "You wrote \"aaya aur saree phati hui thi, refund\", so this looks like: wrong or damaged item",
+            "You mentioned \"meesho\", so we picked Meesho",
+            "We found these details: amount: 1299",
+            "We're 72% sure about this",
+            "Marked medium priority because the amount is ₹1,299"
+          ],
+          "entities": {
+            "amount": "1299"
+          },
+          "urgency": "medium",
+          "entitlements": [
+            {
+              "text": "The store's Grievance Officer must reply within 48 hours and fix your complaint within one month",
+              "status": "owed",
+              "basis": "Consumer Protection (E-Commerce) Rules, 2020",
+              "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1843143"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "in_app",
+              "title": "Ask in the app",
+              "instructions": "Raise the issue on the order inside the app. Save the ticket number they give you.",
+              "channel": "app",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "customer_care",
+              "title": "Contact customer care",
+              "instructions": "Call, email or chat with customer care from the help page. Quote your order ID and the ticket number from step 1.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "url",
+                "label": "Open help page",
+                "value": "https://www.meesho.com/",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 48,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "grievance_officer",
+              "title": "Write to the Grievance Officer",
+              "instructions": "Email the Grievance Officer. By law they must confirm they got it within 48 hours and fix it within one month.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Grievance Officer",
+                "value": "legalsupport@meesho.com",
+                "verified": true,
+                "source_url": "https://www.meesho.com/legal/terms-conditions"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "rule",
+              "acknowledge_hours": 48,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online. Share the order ID, dates and what the company replied.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "legalsupport@meesho.com",
+            "subject": "Complaint: Wrong or damaged item",
+            "body": "Dear Meesho team,\n\nI am writing to complain that the item I received is wrong or damaged.\n\nDetails:\n- Order ID: [Order ID]\n- Amount: ₹1,299\n\nPlease arrange a pickup and a replacement or a full refund.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "flight_delay": {
+    "input": "IndiGo flight 6E 2134 7 ghante late tha, khana bhi nahi diya",
+    "status": 200,
+    "seconds": 0.03,
+    "response": {
+      "section": "travel",
+      "company": "indigo",
+      "company_name": "IndiGo",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "flight_delay",
+          "title": "Flight delayed",
+          "summary": "Your IndiGo flight was 7 hours late",
+          "confidence": 0.95,
+          "xai_reasons": [
+            "You wrote \"2134 7 ghante late tha, khana bhi\", so this looks like: flight delayed",
+            "You mentioned \"indigo\", so we picked IndiGo",
+            "We found these details: hours late: 7, flight: 6E 2134",
+            "We're 95% sure about this"
+          ],
+          "entities": {
+            "delay_hours": "7",
+            "flight_number": "6E 2134",
+            "meals_refused": "True"
+          },
+          "urgency": "low",
+          "entitlements": [
+            {
+              "text": "You were owed free meals and refreshments while you waited",
+              "status": "owed",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.4.1: delays of 4+ hours qualify for any flight length",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "You said you weren't given food. Mention this in your complaint",
+              "status": "info",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.8.1(a)",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "You can ask for another flight within 6 hours, or a full refund",
+              "status": "owed",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.4.2 (domestic flights delayed more than 6 hours)",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "If your flight was due to leave between 8 PM and 3 AM, you can also ask for a free hotel stay",
+              "status": "maybe",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.4.3",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "A delay by itself doesn't qualify for cash compensation",
+              "status": "not_owed",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.7.1: cash compensation only for denied boarding and cancellation",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "None of this applies if the delay was caused by weather, air traffic control or other events outside the airline's control",
+              "status": "info",
+              "basis": "DGCA CAR Section 3 Series M Part IV, paras 1.4, 1.5, 3.4.4",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "airline_care",
+              "title": "Contact airline customer care",
+              "instructions": "Call or write to the airline. Quote your PNR and flight number, and keep the complaint number.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "phone",
+                "label": "Call customer care",
+                "value": "0124-4973838 / 0124-6173838",
+                "verified": true,
+                "source_url": "https://www.goindigo.in/contact-us.html"
+              },
+              "other_contacts": [
+                {
+                  "kind": "email",
+                  "label": "Email customer care",
+                  "value": "Customer.experience@goindigo.in",
+                  "verified": true,
+                  "source_url": "https://www.goindigo.in/contact-us.html"
+                },
+                {
+                  "kind": "url",
+                  "label": "Open help page",
+                  "value": "https://www.goindigo.in/contact-us.html",
+                  "verified": true,
+                  "source_url": "https://www.goindigo.in/contact-us.html"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 72,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "nodal_officer",
+              "title": "Write to the airline's Nodal Officer",
+              "instructions": "Email the Nodal Officer with your PNR and complaint number. DGCA requires every airline to have one.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Nodal Officer",
+                "value": "nodalofficer@goindigo.in",
+                "verified": true,
+                "source_url": "https://www.goindigo.in/contact-us.html"
+              },
+              "other_contacts": [
+                {
+                  "kind": "phone",
+                  "label": "Call the Nodal Officer",
+                  "value": "0124-4973838 / 0124-6173838",
+                  "verified": true,
+                  "source_url": "https://www.goindigo.in/contact-us.html"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 168,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "appellate_authority",
+              "title": "Appeal to the Appellate Authority",
+              "instructions": "If the Nodal Officer's reply doesn't fix it, appeal to the Appellate Authority.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Appellate Authority",
+                "value": "appellateauthority@goindigo.in",
+                "verified": true,
+                "source_url": "https://www.goindigo.in/contact-us.html"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 168,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "airsewa",
+              "title": "File on AirSewa",
+              "instructions": "File your grievance on AirSewa (Ministry of Civil Aviation).",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open AirSewa (Ministry of Civil Aviation)",
+                "value": "https://airsewa.gov.in/#/home",
+                "verified": true,
+                "source_url": "https://airsewa.gov.in/#/home"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 360,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online with your PNR, dates and replies so far.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 6,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "Customer.experience@goindigo.in",
+            "subject": "Complaint: Flight delayed (Flight 6E 2134)",
+            "body": "Dear IndiGo team,\n\nI am writing to complain about the delay of my flight.\n\nDetails:\n- Flight number: 6E 2134\n- PNR / booking reference: [PNR]\n- Date of travel: [Date of travel]\n- Length of delay: about 7 hours\n- No meals or refreshments were provided while I waited\n\nPlease provide the facilities and refund or alternate flight I am entitled to.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "flight_cancellation": {
+    "input": "Air India cancelled my flight just 3 hours before, it was a 2 hour flight",
+    "status": 200,
+    "seconds": 0.02,
+    "response": {
+      "section": "travel",
+      "company": "air_india",
+      "company_name": "Air India",
+      "company_confidence": 0.95,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "flight_cancellation",
+          "title": "Flight cancelled",
+          "summary": "Your Air India flight was cancelled",
+          "confidence": 0.84,
+          "xai_reasons": [
+            "You wrote \"Air India cancelled my flight just\", so this looks like: flight cancelled",
+            "You mentioned \"air india\", so we picked Air India",
+            "We found these details: notice given (hours): 3, flight length (hours): 2",
+            "We're 84% sure about this"
+          ],
+          "entities": {
+            "notice_hours": "3",
+            "block_hours": "2"
+          },
+          "urgency": "low",
+          "entitlements": [
+            {
+              "text": "You can ask for a full refund plus up to ₹7,500 compensation (or your one-way basic fare plus fuel charge, if that's less), or another flight",
+              "status": "owed",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.3.2: told less than 24 hours before",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "Free meals and refreshments while you wait at the airport for the new flight",
+              "status": "maybe",
+              "basis": "DGCA CAR Section 3 Series M Part IV, para 3.3.2 with 3.8.1(a)",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            },
+            {
+              "text": "No compensation if you didn't give a phone or email when booking, or for weather or other events outside the airline's control",
+              "status": "info",
+              "basis": "DGCA CAR Section 3 Series M Part IV, paras 3.3.3, 3.3.4",
+              "source_url": "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=we1PSlOuQhYdHcwKKrm7ew%3D%3D"
+            }
+          ],
+          "urgent_action": null,
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "airline_care",
+              "title": "Contact airline customer care",
+              "instructions": "Call or write to the airline. Quote your PNR and flight number, and keep the complaint number.",
+              "channel": "phone_or_email",
+              "contact": {
+                "kind": "phone",
+                "label": "Call customer care",
+                "value": "+91 116 932 9333 / +91 116 932 9999",
+                "verified": true,
+                "source_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open help page",
+                  "value": "https://www.airindia.com/in/en/contact-us/customer-support-portal.html",
+                  "verified": true,
+                  "source_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 72,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "nodal_officer",
+              "title": "Write to the airline's Nodal Officer",
+              "instructions": "Email the Nodal Officer with your PNR and complaint number. DGCA requires every airline to have one.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Nodal Officer",
+                "value": "nodalofficer@airindia.com",
+                "verified": true,
+                "source_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 168,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "appellate_authority",
+              "title": "Appeal to the Appellate Authority",
+              "instructions": "If the Nodal Officer's reply doesn't fix it, appeal to the Appellate Authority.",
+              "channel": "email",
+              "contact": {
+                "kind": "email",
+                "label": "Email the Appellate Authority",
+                "value": "appellateauthority@airindia.com",
+                "verified": true,
+                "source_url": "https://www.airindia.com/in/en/contact-us/grievance-resolution.html"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 168,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 4,
+              "id": "airsewa",
+              "title": "File on AirSewa",
+              "instructions": "File your grievance on AirSewa (Ministry of Civil Aviation).",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open AirSewa (Ministry of Civil Aviation)",
+                "value": "https://airsewa.gov.in/#/home",
+                "verified": true,
+                "source_url": "https://airsewa.gov.in/#/home"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": 360,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 5,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online with your PNR, dates and replies so far.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 6,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": "nodalofficer@airindia.com",
+            "subject": "Complaint: Flight cancelled",
+            "body": "Dear Air India team,\n\nI am writing to complain about the cancellation of my flight.\n\nDetails:\n- Flight number: [Flight number]\n- PNR / booking reference: [PNR]\n- Date of travel: [Date of travel]\n\nPlease provide the refund, alternate flight and compensation I am entitled to.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "train_late": {
+    "input": "Train 4 ghante late hai, abhi nikli nahi, refund chahiye. PNR 4512367890",
+    "status": 200,
+    "seconds": 0.02,
+    "response": {
+      "section": "travel",
+      "company": "indian_railways",
+      "company_name": "Indian Railways (IRCTC)",
+      "company_confidence": 0.85,
+      "needs_clarification": false,
+      "clarification_question": null,
+      "clarification_options": [],
+      "issues": [
+        {
+          "issue_type": "train_late_not_travelled",
+          "title": "Train late, didn't travel",
+          "summary": "Your train is running 4 hours late",
+          "confidence": 0.84,
+          "xai_reasons": [
+            "You wrote \"Train 4 ghante late hai, abhi nikli\", so this looks like: train late, didn't travel",
+            "You mentioned \"train\", so we picked Indian Railways (IRCTC)",
+            "We found these details: hours late: 4, PNR: 4512367890",
+            "We're 84% sure about this",
+            "Marked high priority because your train hasn't left yet"
+          ],
+          "entities": {
+            "delay_hours": "4",
+            "train_pnr": "4512367890"
+          },
+          "urgency": "high",
+          "entitlements": [
+            {
+              "text": "Full refund of your fare, with no cancellation charge",
+              "status": "owed",
+              "basis": "Indian Railways refund rules (w.e.f. 12 Nov 2015), clause 6: train more than 3 hours late and you don't travel",
+              "source_url": "https://contents.irctc.co.in/en/REFUND%20RULES%20wef%2012-Nov-15.pdf"
+            },
+            {
+              "text": "E-ticket: file a TDR online before the train actually departs. Counter ticket: hand it in before the train departs",
+              "status": "info",
+              "basis": "Indian Railways refund rules (w.e.f. 12 Nov 2015), clause 6",
+              "source_url": "https://contents.irctc.co.in/en/REFUND%20RULES%20wef%2012-Nov-15.pdf"
+            }
+          ],
+          "urgent_action": "File your TDR now, before the train departs, or you lose the full refund.",
+          "start_level": 1,
+          "start_reason": null,
+          "steps": [
+            {
+              "level": 1,
+              "id": "tdr_or_railmadad",
+              "title": "File a TDR on IRCTC (refund) or complain on RailMadad",
+              "instructions": "For a refund, log in to IRCTC and choose Services > File Ticket Deposit Receipt (TDR). For any other complaint, use RailMadad or call 139.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open IRCTC TDR (Ticket Deposit Receipt)",
+                "value": "https://www.irctc.co.in/nget/train-search",
+                "verified": true,
+                "source_url": "https://contents.irctc.co.in/en/eticketCancel.html"
+              },
+              "other_contacts": [
+                {
+                  "kind": "phone",
+                  "label": "Call 139",
+                  "value": "139",
+                  "verified": true,
+                  "source_url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp"
+                },
+                {
+                  "kind": "url",
+                  "label": "Open RailMadad",
+                  "value": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp",
+                  "verified": true,
+                  "source_url": "https://railmadad.indianrailways.gov.in/madad/final/home.jsp"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": true,
+              "is_done": false
+            },
+            {
+              "level": 2,
+              "id": "nch",
+              "title": "Complain to the National Consumer Helpline",
+              "instructions": "Call 1915 or file online with your PNR, TDR number and dates.",
+              "channel": "phone_or_web",
+              "contact": {
+                "kind": "phone",
+                "label": "Call 1915",
+                "value": "1915",
+                "verified": true,
+                "source_url": "https://consumerhelpline.gov.in/"
+              },
+              "other_contacts": [
+                {
+                  "kind": "url",
+                  "label": "Open National Consumer Helpline",
+                  "value": "https://consumerhelpline.gov.in/user/index.php",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                },
+                {
+                  "kind": "whatsapp",
+                  "label": "WhatsApp",
+                  "value": "+918800001915",
+                  "verified": true,
+                  "source_url": "https://consumerhelpline.gov.in/"
+                }
+              ],
+              "verified": true,
+              "deadline_hours": 720,
+              "deadline_basis": "default",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            },
+            {
+              "level": 3,
+              "id": "edaakhil",
+              "title": "File a consumer case on e-Daakhil",
+              "instructions": "File a case with the Consumer Commission online. Attach your evidence log.",
+              "channel": "web",
+              "contact": {
+                "kind": "url",
+                "label": "Open e-Daakhil (Consumer Commission online filing)",
+                "value": "https://edaakhil.nic.in",
+                "verified": true,
+                "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2004520"
+              },
+              "other_contacts": [],
+              "verified": true,
+              "deadline_hours": null,
+              "deadline_basis": "final",
+              "acknowledge_hours": null,
+              "is_current": false,
+              "is_done": false
+            }
+          ],
+          "alternate_steps": [],
+          "complaint": {
+            "to": null,
+            "subject": "Complaint: Train late, didn't travel (PNR 4512367890)",
+            "body": "Dear Indian Railways (IRCTC) team,\n\nI am writing regarding my refund, as my train was running more than three hours late and I did not travel.\n\nDetails:\n- PNR: 4512367890\n- Train number: [Train number]\n- Date of journey: [Date of journey]\n- The train was running about 4 hours late\n\nUnder the Indian Railways refund rules (w.e.f. 12 November 2015, clause 6), a full refund is due when a train runs more than three hours late and the passenger does not travel.\n\nPlease process the full refund of my fare.\n\nI request a written reply with a complaint reference number.\n\nRegards,\n[Your name]\n[Your phone number]\n[Your registered email]"
+          }
+        }
+      ]
+    }
+  },
+  "vague": {
+    "input": "I have a problem please help",
+    "status": 200,
+    "seconds": 0.01,
+    "response": {
+      "section": null,
+      "company": null,
+      "company_name": null,
+      "company_confidence": 0.0,
+      "needs_clarification": true,
+      "clarification_question": "What is your problem about?",
+      "clarification_options": [
+        {
+          "label": "A shopping order",
+          "section": "shopping",
+          "company": null,
+          "issue_type": null
+        },
+        {
+          "label": "A flight",
+          "section": "travel",
+          "company": null,
+          "issue_type": null
+        },
+        {
+          "label": "A train",
+          "section": "travel",
+          "company": "indian_railways",
+          "issue_type": null
+        }
+      ],
+      "issues": []
+    }
+  }
+}
