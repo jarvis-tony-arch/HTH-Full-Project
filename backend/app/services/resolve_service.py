@@ -411,6 +411,14 @@ def classify_issues(text: str, section: str, mode: str, issue_hint=None) -> list
     if "payment_deducted_no_order" in scores and "late_delivery" in scores:
         if re.search(r"(no order|not placed|order (nahi|nhi) (hua|bana|placed))", low):
             scores.pop("late_delivery")
+    if "late_delivery" in scores and ("refund_delay" in scores or "wrong_or_damaged_item" in scores):
+        # "refund nahi aaya" / "toota hua aaya" mean the refund is missing or the item
+        # arrived damaged, not that the order wasn't delivered.
+        order_missing = re.search(
+            r"(order|parcel|package|delivery|saman|samaan)\s*(abhi tak\s*)?(nahi|nhi|not|never)\s*(aaya|aya|mila|arrived|delivered|received)"
+            r"|not (been )?delivered|\b(late|delay|delayed)\b", raw_low)
+        if not order_missing:
+            scores.pop("late_delivery")
     if "size_or_fit_return" in scores and "late_delivery" in scores:
         if not re.search(r"(late|delay|not (arrived|delivered)|nahi aaya|nhi aaya|nahi aya|nhi aya)", raw_low):
             scores.pop("late_delivery")
