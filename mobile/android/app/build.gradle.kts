@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.hth.hth_support"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37 // receive_sharing_intent needs 37+
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

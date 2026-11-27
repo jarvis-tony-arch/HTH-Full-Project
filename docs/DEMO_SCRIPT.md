@@ -1,5 +1,45 @@
 # HTH demo script
 
+HTH is now a review analyser: in a shopping app, tap **Share → HTH** on a product and HTH reads that product's reviews on your phone, looks for the same product on other shops, and gives a plain-words verdict. The complaint helper is still there as a small "Got a problem after buying?" link.
+
+## Before you start
+
+- Install `mobile/build/app/outputs/flutter-apk/app-release.apk` (points at the Render backend).
+- **The Render backend must have the review-analyser endpoints deployed** (`/analyze-reviews`, `/match-products`, `/independent-opinions`, `/review-selectors`). Until it is redeployed, live checks end with "couldn't reach our server to analyse them"; use demo mode (Part A2) or run the backend locally (below).
+- Open `https://hth-backend-5q9g.onrender.com/health` a minute before. The free tier sleeps; the app also wakes it while the phone is reading pages.
+- Local backend for rehearsal: `uvicorn main:app` in `backend/`, then build with `flutter build apk --debug --dart-define=API_URL=http://10.0.2.2:8000` for the emulator.
+- Optional: set `YOUTUBE_API_KEY`, `REDDIT_CLIENT_ID` and `REDDIT_CLIENT_SECRET` on the backend. Without them the "Independent opinions" card says "Not connected yet" (nothing is made up).
+
+## A1. Live share demo (tested on the emulator, 2026-11-27, local backend)
+
+| Step | What to do | What to point out |
+|---|---|---|
+| 1 | Open the product in the Myntra/Flipkart/Amazon app or site, tap **Share**, choose **HTH** | HTH opens straight on "Checking reviews" |
+| 2 | Watch the progress screen | "Reading reviews… 64 found" counting up, then "Looking for it on other shops", per-shop ticks |
+| 3 | If a "Is this the same product?" card appears, answer it | Low-confidence matches are never merged silently |
+| 4 | Result screen | Verdict badge + one sentence, "Is it like the photo?", aspect bars (tap one for real quotes), trust score, across-shops card, "Why this verdict?" |
+| 5 | Tap **Share this result** | Plain-text summary for WhatsApp |
+
+Tested products and what happened:
+
+- **Myntra, Roadster Women Solid Relaxed Fit T-shirt** (`https://www.myntra.com/1753418`): 141 reviews read in about 30 s, Amazon and AJIO searched (no exact match, correctly), Flipkart search timed out. Verdict **Good buy**, "Most buyers are happy, though some reviews carry little detail" (36% one-line 5★ reviews flagged).
+- **Flipkart, boAt Airdopes 141 Gen 2** (`https://www.flipkart.com/boat-airdopes-141-gen-2/p/itm619afae0c5b89?pid=ACCHGG7NBBMK5GGJ`): 81 reviews in about 40 s, Amazon + Croma searched, one Amazon listing scored "possible" (0.70) so the app asked instead of merging. Verdict **Good buy**, "Rated 4.0★ by 7,170 buyers; 4.3★ in the 81 recent reviews we read".
+- **Amazon, boAt Airdopes 141** (`https://www.amazon.in/dp/B0H7X1FQ39`): Amazon's full review pages ask for sign-in. HTH shows Amazon's own sign-in page with "Sign in yourself, or skip". After **Skip** only the 8 product-page reviews are available, so the result is "Not enough reviews". HTH never signs in or solves checks.
+
+Timing depends on the phone and the shops: Flipkart pages are slow on the emulator and sometimes time out.
+
+## A2. Demo-mode fallback (works offline)
+
+1. Home → settings icon (top right) → turn on **Demo mode**.
+2. Home now shows **Demo products**: real reviews collected by the app on 2026-11-27, analysed by the real analyser (`backend/eval/build_demo.py`), bundled in the APK.
+3. Tap a product to open its result. Tested with Wi-Fi and mobile data off on the emulator (product photos don't load offline; everything else does).
+
+Currently 2 demo products (both "Good buy"). The planned "not as shown" clothing item, "suspicious reviews" product and "getting worse" product are **not included yet**: I didn't find real examples in a short, polite scan of Myntra listings and did not want to invent any. To add one: share the product to a debug build, pull `collected_<platform>_<id>.json` with `adb exec-out run-as com.hth.hth_support cat app_flutter/<file>` into `backend/tests/data/`, add it to `DEMO` in `eval/build_demo.py`, run `python -m eval.build_demo`.
+
+---
+
+# Part B: complaint helper (secondary)
+
 Tested against the live backend `https://hth-backend-5q9g.onrender.com` on 2026-11-26. Every result below is copied from the live `/resolve` response.
 
 ## Before you start

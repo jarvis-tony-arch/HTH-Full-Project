@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../core/theme.dart';
-import '../features/resolve/home_screen.dart';
+import '../features/reviews/review_home.dart';
+import '../features/reviews/rtheme.dart';
 import 'main_shell.dart';
 import 'onboarding_screen.dart';
 
@@ -64,14 +64,14 @@ class _SplashScreenState extends State<SplashScreen>
     Future.delayed(const Duration(milliseconds: 1200), _goHome);
   }
 
-  /// The simple "get help" Home is the front door now. The old company
-  /// triage mode (onboarding + MainShell) is one small link away on Home.
+  /// The review analyser Home is the front door. The complaint helper and
+  /// the old company triage mode are one small link away.
   Future<void> _goHome() async {
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) =>
-            Theme(data: AppTheme.light, child: const ResolveHomeScreen()),
+        pageBuilder: (context, __, ___) => Theme(
+            data: reviewTheme(MediaQuery.platformBrightnessOf(context)), child: const ReviewHome()),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
         transitionDuration: const Duration(milliseconds: 350),
@@ -142,7 +142,7 @@ class _SplashScreenState extends State<SplashScreen>
                       const SizedBox(height: 10),
                       // Subtitle
                       Text(
-                        'Smart Support Intelligence',
+                        'Know before you buy',
                         style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,

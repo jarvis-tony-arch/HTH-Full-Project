@@ -8,6 +8,9 @@ import 'providers/tickets_provider.dart';
 import 'features/resolve/cases_store.dart';
 import 'services/api_service.dart';
 import 'screens/splash_screen.dart';
+import 'features/reviews/share_listener.dart';
+import 'features/reviews/history_store.dart';
+import 'features/reviews/settings_sheet.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,9 +36,12 @@ class HTHApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AnalysisProvider()),
         ChangeNotifierProvider(create: (_) => SettingsProvider()),
         ChangeNotifierProvider(create: (_) => CasesStore()..load()),
+        ChangeNotifierProvider(create: (_) => HistoryStore()..load()),
+        ChangeNotifierProvider(create: (_) => DemoSettings()..load()),
       ],
-      child: MaterialApp(
-        title: 'HTH Support AI',
+      child: ShareListener(child: MaterialApp(
+        navigatorKey: appNavigatorKey,
+        title: 'HTH',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
@@ -47,7 +53,7 @@ class HTHApp extends StatelessWidget {
           ),
         ),
         home: const SplashScreen(),
-      ),
+      )),
     );
   }
 }

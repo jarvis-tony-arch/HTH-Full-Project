@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 class AnalyzeRequest(BaseModel):
     text: str
@@ -153,3 +153,92 @@ class Section(_Strict):
 class SectionsResponse(_Strict):
     sections: List[Section]
     last_verified: str
+
+# ─── Review analyser: product matching + independent opinions ──────────
+class ListingIn(BaseModel):
+    platform: str = ""
+    title: str = ""
+    brand: Optional[str] = ""
+    model: Optional[str] = ""
+    url: Optional[str] = ""
+    price: Optional[float] = None
+    rating: Optional[float] = None
+    rating_count: Optional[int] = None
+    image: Optional[str] = ""
+    sponsored: Optional[bool] = False
+
+
+class MatchRequest(BaseModel):
+    product: ListingIn
+    candidates: List[ListingIn] = []
+
+
+class MatchResult(BaseModel):
+    decision: str  # match | possible | no_match
+    confidence: float
+    reasons: List[str]
+    parts: Dict[str, float]
+    candidate: ListingIn
+
+
+class MatchResponse(BaseModel):
+    results: List[MatchResult]
+    summary: str
+    query: str
+
+
+class OpinionsRequest(BaseModel):
+    query: str
+
+
+class OpinionItem(BaseModel):
+    source: str
+    title: str
+    text: str = ""
+    channel: str = ""
+    published: str = ""
+    url: str
+    comments: List[str] = []
+
+
+class OpinionSource(BaseModel):
+    configured: bool
+    items: List[OpinionItem] = []
+    error: Optional[str] = None
+
+
+class OpinionsResponse(BaseModel):
+    query: str
+    youtube: OpinionSource
+    reddit: OpinionSource
+
+
+class ReviewSourceIn(BaseModel):
+    platform: str
+    url: Optional[str] = ""
+    meta: Optional[Dict[str, Any]] = None
+    note: Optional[str] = ""
+    reviews: List[Dict[str, Any]] = []
+
+
+class AnalyzeReviewsRequest(BaseModel):
+    product: Dict[str, Any] = {}
+    sources: List[ReviewSourceIn] = []
+    listings: List[Dict[str, Any]] = []
+    opinions: Optional[Dict[str, Any]] = None
+    collected_at: Optional[str] = None
+
+
+class AnalyzeReviewsResponse(BaseModel):
+    product: Dict[str, Any]
+    reviews_analysed: int
+    stats: Dict[str, Any]
+    verdict: Dict[str, Any]
+    confidence: Dict[str, Any]
+    not_as_shown: Dict[str, Any]
+    aspects: Dict[str, Any]
+    trust: Dict[str, Any]
+    trend: Dict[str, Any]
+    cross_platform: Dict[str, Any]
+    size_advice: Optional[Dict[str, Any]] = None
+    quotes: List[Dict[str, Any]]

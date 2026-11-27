@@ -1,0 +1,264 @@
+{
+  "version": 3,
+  "updated": "2026-11-27",
+  "platforms": {
+    "amazon": {
+      "product_url": "https://www.amazon.in/dp/{id}",
+      "reviews_url": "https://www.amazon.in/product-reviews/{id}/?sortBy=recent&pageNumber={page}",
+      "mode": "pages",
+      "max_pages": 10,
+      "blocked": {
+        "url_contains": [
+          "/ap/signin",
+          "/errors/validateCaptcha",
+          "/ap/cvf"
+        ],
+        "text_contains": [
+          "Enter the characters you see below",
+          "Type the characters you see in this image",
+          "Solve this puzzle"
+        ]
+      },
+      "meta": {
+        "title": "#productTitle, #title",
+        "brand": "#bylineInfo",
+        "price": "#corePrice_feature_div .a-offscreen, .a-price .a-offscreen, #priceblock_ourprice",
+        "rating": "#acrPopover@title, [data-hook=\"rating-out-of-text\"], #acrPopover .a-icon-alt",
+        "rating_count": "#acrCustomerReviewText, [data-hook=\"total-review-count\"]",
+        "image": "#landingImage@src, #imgTagWrapperId img@src, #main-image@src",
+        "histogram": "#histogramTable a@aria-label, #histogramTable li a@aria-label, [data-hook=\"histogram\"] a@aria-label",
+        "specs": "#productOverview_feature_div tr, #prodDetails tr, #detailBullets_feature_div li, #tech tr"
+      },
+      "review": {
+        "card": "[data-hook=\"review\"], [data-hook=\"mobley-review-content\"]",
+        "id": "@id",
+        "title": "[data-hook=\"review-title\"] > span:not(.a-letter-space), [data-hook=\"reviewTitle\"], [data-hook=\"review-title\"]",
+        "text": "[data-hook=\"review-body\"], [data-hook=\"reviewRichContentContainer\"], [data-hook=\"reviewText\"]",
+        "rating": "[data-hook=\"review-star-rating\"], [data-hook=\"cmps-review-star-rating\"], .a-icon-star",
+        "date": "[data-hook=\"review-date\"]",
+        "verified": "[data-hook=\"avp-badge\"], [data-hook=\"avp-badge-linkless\"]",
+        "variant": "[data-hook=\"format-strip\"], [data-hook=\"format-strip-linkless\"]",
+        "helpful": "[data-hook=\"helpful-vote-statement\"]"
+      }
+    },
+    "flipkart": {
+      "product_url": "{url}",
+      "reviews_url": "{flipkart_reviews}&sortOrder=MOST_RECENT&page={page}",
+      "mode": "pages",
+      "max_pages": 12,
+      "blocked": {
+        "url_contains": [
+          "/account/login",
+          "captcha"
+        ],
+        "text_contains": [
+          "Are you a human",
+          "Please verify you are a human",
+          "Access Denied"
+        ]
+      },
+      "meta": {},
+      "review": {
+        "parser": "leaves",
+        "leaf": "[dir=\"auto\"]",
+        "anchor": "^·\\s",
+        "rating": "^[1-5](\\.\\d)?$",
+        "variant_prefix": "Review for:",
+        "verified": "^(Verified Purchase|Certified Buyer)",
+        "author_suffix": "^,\\s",
+        "stop": "^(Helpful|Verified Purchase|Certified Buyer|Report Abuse|READ MORE|\\d+)$"
+      },
+      "histogram_text": "(?:^|\\n)([1-5])\\n★\\n([\\d,]+)"
+    },
+    "myntra": {
+      "product_url": "https://www.myntra.com/{id}",
+      "reviews_url": "https://www.myntra.com/reviews/{id}",
+      "mode": "page_api",
+      "blocked": {
+        "url_contains": [
+          "/login"
+        ],
+        "text_contains": [
+          "Access Denied",
+          "verify you are human"
+        ]
+      },
+      "meta": {
+        "title": ".product-details-name, .pdp-name",
+        "brand": ".product-details-brand, .pdp-title",
+        "price": ".product-details-price, .pdp-price",
+        "rating": ".index-averageRating span:first-child, .index-overallRating div:first-child",
+        "rating_count": ".index-ratingsCount, .detailed-reviews-headline",
+        "image": ".product-details-image@style",
+        "fit_summary": ".ugc-ugcContainer, [class*=\"ugc-\"]"
+      },
+      "review": {
+        "card": ".user-review-userReviewWrapper",
+        "text": ".user-review-reviewTextWrapper",
+        "rating": ".user-review-starRating",
+        "date": ".user-review-left span:last-child",
+        "helpful": ".user-review-votes"
+      },
+      "histogram_text": "RATINGS[\\s\\S]*?\\n5\\n(\\d+)\\n4\\n(\\d+)\\n3\\n(\\d+)\\n2\\n(\\d+)\\n1\\n(\\d+)",
+      "max_pages": 12,
+      "page_api": {
+        "note": "The same request Myntra's review page makes when you scroll down.",
+        "url": "/gateway/v1/reviews/product/{id}?size=12&sort=1&rating=0&page={page}&includeMetaData=true",
+        "list": "reviews",
+        "fields": {
+          "id": "id",
+          "text": "review",
+          "rating": "userRating",
+          "date_ms": "updatedAt",
+          "helpful": "upvotes",
+          "variant": "styleAttribute"
+        }
+      }
+    }
+  },
+  "search": {
+    "amazon": {
+      "url": "https://www.amazon.in/s?k={q}",
+      "card": "[data-component-type=\"s-search-result\"]",
+      "title": "[data-cy=\"title-recipe\"], h2",
+      "link": "a[href*=\"/dp/\"]@href",
+      "price": ".a-price .a-offscreen",
+      "rating": ".a-icon-alt",
+      "image": "img.s-image@src",
+      "skip_text": "^Sponsored",
+      "verified": "2026-11-27"
+    },
+    "flipkart": {
+      "url": "https://www.flipkart.com/search?q={q}",
+      "card": "[data-id]",
+      "title": "a[href*=\"/p/itm\"]@title, a[href*=\"/p/itm\"] img@alt",
+      "link": "a[href*=\"/p/itm\"]@href",
+      "price_regex": "₹([\\d,]+)",
+      "rating_regex": "(?:^|\\|)\\s*([1-5](?:\\.\\d)?)\\s*\\(",
+      "image": "img@src",
+      "verified": "2026-11-27"
+    },
+    "myntra": {
+      "url": "https://www.myntra.com/{q_dash}?rawQuery={q}",
+      "card": "li.product-base",
+      "title": "h4.product-product, .product-product",
+      "brand": "h3.product-brand, .product-brand",
+      "link": "a@href",
+      "price": ".product-discountedPrice, .product-price",
+      "rating": ".product-ratingsContainer span:first-child",
+      "image": "img@src",
+      "verified": "unverified: Myntra listing page selectors checked on brand pages only"
+    },
+    "ajio": {
+      "url": "https://www.ajio.com/search/?text={q}",
+      "card": ".item, .rilrtl-products-list__item",
+      "title": ".nameCls",
+      "brand": ".brand",
+      "link": "a@href",
+      "price": ".price",
+      "image": "img@src",
+      "rating_regex": "\\|\\s*([1-5](?:\\.\\d)?)\\s*\\|\\s*\\|\\s*([\\d,.]+k?)\\s*\\|",
+      "verified": "2026-11-27"
+    },
+    "nykaa": {
+      "url": "https://www.nykaa.com/search/result/?q={q}",
+      "card": "a[href*=\"/p/\"]",
+      "title": "[class*=\"name\" i], h2, h3",
+      "link": "@href",
+      "price_regex": "Discounted price ₹([\\d,]+)",
+      "image": "img@src",
+      "verified": "2026-11-27"
+    },
+    "croma": {
+      "url": "https://www.croma.com/searchB?q={q}%3Arelevance",
+      "card": "li.product-item",
+      "title": "h3.product-title, .product-title",
+      "link": "a@href",
+      "price": ".amount, [data-testid=\"new-price\"]",
+      "image": "img@src",
+      "rating_regex": "\\|\\s*([1-5](?:\\.\\d)?)\\s*\\|\\s*\\(\\d+\\)",
+      "verified": "2026-11-27"
+    },
+    "reliance": {
+      "url": "https://www.reliancedigital.in/products?q={q}",
+      "card": ".product-card, [class*=\"product-card\"]",
+      "title": ".product-card-title, [class*=\"product-card-title\"]",
+      "link": "a@href",
+      "price": "[class*=\"price\"]",
+      "image": "img@src",
+      "enabled": false,
+      "note": "Search results did not render product cards when checked on 2026-11-27; re-enable once selectors are verified."
+    }
+  },
+  "categories": {
+    "fashion": {
+      "words": [
+        "shirt",
+        "t-shirt",
+        "tshirt",
+        "kurta",
+        "dress",
+        "jeans",
+        "trouser",
+        "saree",
+        "top",
+        "jacket",
+        "shoe",
+        "sneaker",
+        "sandal",
+        "hoodie",
+        "skirt",
+        "leggings",
+        "kurti",
+        "shorts",
+        "bra",
+        "socks",
+        "cap",
+        "bag",
+        "wallet",
+        "watch"
+      ],
+      "shops": [
+        "amazon",
+        "flipkart",
+        "myntra",
+        "ajio"
+      ]
+    },
+    "beauty": {
+      "words": [
+        "kajal",
+        "lipstick",
+        "serum",
+        "cream",
+        "shampoo",
+        "conditioner",
+        "sunscreen",
+        "moisturiser",
+        "moisturizer",
+        "face wash",
+        "foundation",
+        "perfume",
+        "lotion",
+        "mascara",
+        "eyeliner",
+        "hair oil"
+      ],
+      "shops": [
+        "amazon",
+        "flipkart",
+        "nykaa",
+        "myntra"
+      ]
+    },
+    "electronics": {
+      "words": [],
+      "shops": [
+        "amazon",
+        "flipkart",
+        "croma",
+        "reliance"
+      ]
+    }
+  }
+}

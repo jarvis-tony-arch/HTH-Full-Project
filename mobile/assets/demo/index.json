@@ -1,0 +1,25 @@
+{
+ "built": "2026-11-27",
+ "products": [
+  {
+   "id": "myntra_1753418",
+   "file": "assets/demo/myntra_1753418.json",
+   "note": "Clothing with happy buyers and size feedback",
+   "collected": "2026-11-27",
+   "title": "Roadster Women Solid Relaxed Fit T-shirt",
+   "verdict": "Good buy",
+   "color": "green",
+   "image": "https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/1753418/2025/6/19/a4660734-f9f6-4112-bb56-8518df37060a1750312183513-Roadster-Women-Solid-Relaxed-Fit-T-shirt-2451750312182839-1.jpg"
+  },
+  {
+   "id": "flipkart_ACCHGG7NBBMK5GGJ",
+   "file": "assets/demo/flipkart_ACCHGG7NBBMK5GGJ.json",
+   "note": "Earbuds: good overall, many one-word reviews",
+   "collected": "2026-11-27",
+   "title": "boAt Airdopes 141 Gen 2, 4 Mics ENx Tech,48H Battery,ASAP Charge,Low Latency,BT v5.4 Bluetooth",
+   "verdict": "Good buy",
+   "color": "green",
+   "image": "https://rukmini1.flixcart.com/image/1500/1500/xif0q/headphone/s/k/v/-original-imahq7ydfunhfpf3.jpeg?q=70"
+  }
+ ]
+}

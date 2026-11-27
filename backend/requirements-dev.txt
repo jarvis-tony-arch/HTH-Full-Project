@@ -1,0 +1,2 @@
+# Dev/test only. Not installed on Render.
+pytest==9.2.0

@@ -2,7 +2,7 @@
 
 B.Tech academic project. A multilingual, AI-powered customer support triage mobile app.
 
-Key features: multi-issue decomposition (one message routed to several departments), Hinglish normalization, explainable AI (XAI) routing reasons, and confidence-aware human escalation.
+Main feature: share a product from Amazon/Flipkart/Myntra to HTH to get a review-based verdict (reviews read on the phone, never bypassing sign-in or checks). Older features, still live: multi-issue decomposition (one message routed to several departments), Hinglish normalization, explainable AI (XAI) routing reasons, and confidence-aware human escalation.
 
 ## Stack and live infrastructure
 
@@ -23,6 +23,9 @@ Key features: multi-issue decomposition (one message routed to several departmen
 - `backend/app/services/`: `nlp_service.py`, `language_service.py`
 - `backend/requirements.txt`, `backend/.python-version`
 - `mobile/lib/services/api_service.dart`: points at the Render URL
+- Review analyser (main feature since Nov 2026): Flutter in `mobile/lib/features/reviews/` (share target, on-device reading with `assets/extract.js`), backend `app/routes/reviews.py` + `app/services/review_analyzer.py`, `product_matcher.py`, `opinions_service.py`. Overview: `docs/ARCHITECTURE.md`.
+- Page selectors: `backend/app/data/review_selectors.json` (served at `/review-selectors`; keep the copy in `mobile/assets/` in sync and bump `version`).
+- Backend tests: `backend/tests` (pytest, `requirements-dev.txt`); evaluation and demo data builders in `backend/eval/`.
 
 `datasets/`, `ml/` and `saved_models/` are not in git (too large). They are copied in locally.
 
