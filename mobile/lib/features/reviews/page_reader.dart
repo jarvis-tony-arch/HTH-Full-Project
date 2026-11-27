@@ -53,7 +53,7 @@ class PageReader {
   }
 
   /// Loads a page and waits for it (plus a short settle for scripts).
-  Future<bool> load(Uri url, {Duration timeout = const Duration(seconds: 30)}) async {
+  Future<bool> load(Uri url, {Duration timeout = const Duration(seconds: 15)}) async {
     if (disposed) return false;
     _finished = Completer<void>();
     try {

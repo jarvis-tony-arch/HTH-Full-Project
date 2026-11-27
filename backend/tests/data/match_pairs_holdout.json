@@ -1,0 +1,56 @@
+{
+  "about": "HELD-OUT set: real Flipkart/Amazon.in search titles for products NOT used while writing the matching rules (collected 2026-11-27, Sponsored results left out). Labels are a human judgement from the titles (1 = same product, colour may differ). First run was blind; see docs/ARCHITECTURE.md for the numbers.",
+  "groups": [
+    {"ref": {"title": "boAt Rockerz 450, 40mm Drivers, 15H Battery, Stream Ad Free Music via App Bluetooth", "brand": "boAt"}, "cands": [
+      ["boAt 2026 Launch Rockerz Plus 450 ANC w/ 40dB Hybrid ANC, Spatial Audio, 80H Battery, ENx™ Tech, (~40ms) Beast™ Mode, Voice Assistant, ASAP™ Charge, BTv6.0, Wireless Headphones with Mic (Black Sabre)", "boAt", 0],
+      ["boAt Rockerz 480, RGB LEDs,6 Light Modes, 40mm Drivers,Beast Mode, 60H Battery, ENx Tech, App Support, Bluetooth Headphones, Wireless Over Ear Headphone with Mic (White Sabre)", "boAt", 0],
+      ["boAt Rockerz 411, 40Ms Low Latency, 40Hrs Battery, 40Mm Drivers, ENx Tech, App Support, Bluetooth Headphones, Wireless Over Ear Headphone with Mic (Active Black)", "boAt", 0],
+      ["boAt Rockerz 450 Pro with Upto 70 Hours Playback Bluetooth", "boAt", 0],
+      ["boAt Rockerz Plus 450 40dB Hybrid ANC,Spatial Audio,80H Battery,ENx,(~40ms)BEAST Mode Bluetooth & Wired", "boAt", 0]
+    ]},
+    {"ref": {"title": "JBL Tune 520 BT 57Hr Playtime, Pure Bass, Multi Connect 5.3LE Bluetooth", "brand": "JBL"}, "cands": [
+      ["JBL Tune 520BT Wireless On Ear Headphones with Mic, Upto 57H Battery, Speed Charge : 5 Min Charge Gives Up to 3H of Playback, Multipoint Connect, Customizable Bass with Headphones App, BT 5.3 (Black)", "JBL", 1],
+      ["JBL Tune 520 BT 57Hr Playtime, Pure Bass, Multi Connect Bluetooth Headset, BT 5.3LE Bluetooth", "JBL", 1],
+      ["JBL Tune 520C, Hi-Res Audio with Pure Bass sound , Compatible with USB-C Devices Wired", "JBL", 0],
+      ["JBL Tune 770NC, BITA Award Winner- Most loved Over Ear Wireless Headphones, True Adaptive Noise Cancellation, Ambient aware,70H Battery, Speed Charge, Google Fast Pair, Multipoint Connect,BT 5.3-Black", "JBL", 0],
+      ["JBL New Launch Tune 780NC Wireless Over Ear Headphones with Adaptive Noise Cancellation, Upto 76 Hrs Battery, Smart Ambient, Spatial Sound, Customized EQ, Google Fast Pair, Dual Pairing, BT 6.0 -Black", "JBL", 0],
+      ["boAt Rockerz 650 Pro, Touch/Swipe Controls, Dolby Audio, 80Hrs Battery, 2Mics ENx, Fast Charge, App Support, Dual Pair, Bluetooth Over Ear Headphones with Mic (Iris Black)", "boAt", 0]
+    ]},
+    {"ref": {"title": "Lenovo AMD Ryzen 3 Quad Core 30 - (8 GB/512 GB SSD/Windows 11 Home) IdeaPad Slim 3 15AMN8 Thin and Lig...", "brand": "Lenovo"}, "cands": [
+      ["Lenovo IdeaPad Slim 3 Ryzen 3 30 15.6\" (39.6cm) FHD Thin and Light Laptop (16GB RAM/512GB SSD/Windows 11/ Office 2024/Grey/1.6Kg), 82XQ01MAIN", "Lenovo", 0],
+      ["Lenovo IdeaPad Slim 3, Ryzen 3 30, 8GB RAM, 512GB SSD, FHD Thin and Light Laptop, 15.6\" (39.6cm), Windows 11, Office 2024, Grey, 1.6Kg, 82XQ01VYIN, AMD Radeon 610M Graphics, Laptop", "Lenovo", 1],
+      ["Acer Aspire 3 (2026),AMD Ryzen 3 3200U, 8GB DDR4 RAM/256 SSD, 39.62 cm /15.6\" FHD IPS Display, Win 11Home, Silver, 1.7 Kg, A325-39, Thin & Light Laptop", "Acer", 0]
+    ]},
+    {"ref": {"title": "Mi 20000 mAh 33 W Power Bank", "brand": "Mi"}, "cands": [
+      ["Xiaomi Power Bank 4i 20000mAh 33W Super Fast Charging PD |Smart 12 Layer Protection|Type C Input & Output|Triple Output Ports|Supports Android,Apple, Tablets, Earbuds,Watch(MI Powerbank),Black", "Xiaomi", 1],
+      ["Xiaomi Power Bank 5i 20000mAh 67W Turbo Charging PD 3.0 & PPS|in-Built Cable|12 Layer Protection|Digital Display|Triple Output Ports|Supports Laptop, Tablet, Phone, Earbud (Jet Black)- 2026 New Launch", "Xiaomi", 0],
+      ["Xiaomi Power Bank 4i 10000mAh 22.5W Fast Charging PD|Smart 12 Layer Protection| Durable Steel Casing |Triple Output Ports|Supports All Phone(MI Power Bank),Purple", "Xiaomi", 0],
+      ["Xiaomi MI Power Bank 20000 165W Fast Charging|Built-in USB-C Cable|12Layer Protection|Digital Display|Triple Output|Charges Laptop,Tablet,Phone,Earbuds,Watch|Space Grey|2026 Sep Launch", "Xiaomi", 0],
+      ["boAt Energyshroom PB435 20000 mAh 35W Super Fast Charging Power Bank, Smart 12 Layer Protection (4X Output Ports, Supports Android, iPhone, Tablets, Earbuds, etc.) (Stone Grey)", "boAt", 0],
+      ["MI8BE 20000 mAh 22.5 W Compact Pocket Size Power Bank", "MI8BE", 0],
+      ["Ambrane 20000 mAh 22.5 W Compact Pocket Size Power Bank", "Ambrane", 0]
+    ]},
+    {"ref": {"title": "OnePlus Buds Pro 3 - Midnight Opus Bluetooth", "brand": "OnePlus"}, "cands": [
+      ["OnePlus Buds Pro 3 Bluetooth TWS in-Ear Buds – Dual Drivers, Dual DACs, Dynaudio EQs, AI-Powered Translator, Up to 50dB Adaptive Noise Cancellation, Up to 43Hrs Battery.", "OnePlus", 1],
+      ["OnePlus Nord Buds 3 Truly Wireless in Ear Bluetooth Earbuds with up to 32dB Active Noise Cancellation, 10mins for 11Hours Fast Charging with Up to 43h Music Playback -Harmonic Gray", "OnePlus", 0],
+      ["Wireless Earbuds Compatible with Oneplus, Buds 3 Pro with Active Noise Cancellation, Low Latency Gaming Mode, Clear Calls, Long Battery Life, Fast Charging and Deep Bass-(Black)", "", 0],
+      ["Wireless Earbuds Compatible with Oneplus, Buds Pro 3 with Crystal Clear Voice, Long Battery Life, Noise Reduction, Powerful Bass Sound, Lightweight and Comfortable Design-(White)", "", 0],
+      ["OnePlus Nord Buds 3r TWS Earbud, 10min charge for 8hr Music, 3D Audio, 2-mic call Bluetooth", "OnePlus", 0],
+      ["Noise Buds N1 Pro with Metallic Finish, 30dB ANC, 60H Playtime and Instacharge,BT5.3 Bluetooth", "Noise", 0]
+    ]},
+    {"ref": {"title": "Samsung Galaxy M35 5G (Thunder Grey, 128 GB)", "brand": "Samsung"}, "cands": [
+      ["Samsung Galaxy M35 5G (Moonlight Blue, 128 GB)", "Samsung", 1],
+      ["Samsung Galaxy M17 5G Mobile (Sapphire Black, 4GB RAM, 128GB Storage) | 50MP OIS Triple Camera | Super AMOLED Display | Gorilla Glass Victus | 6 Gen OS Upgrades | Knox Security | AI", "Samsung", 0],
+      ["Samsung Galaxy F70e 5G (Spotlight Blue, 128 GB) (4 GB RAM) | 6000 mAh Battery | 6.74\" PLS LCD Display | Dimensity 6300 | Octa Core Processor |", "Samsung", 0],
+      ["Samsung Galaxy F36 5G (Red, 128 GB) (6 GB RAM)", "Samsung", 0]
+    ]},
+    {"ref": {"title": "vivo T5 5G (Silver Green, 128 GB)", "brand": "vivo"}, "cands": [
+      ["vivo T5 5G Smartphone (Silver Green, 6GB RAM, 128GB Storage) with 7050mAh Battery, 6.83-inch Curved AMOLED Display and 50MP + 8MP Rear Camera", "vivo", 1],
+      ["vivo T5 5G (Royal Bronze, 128 GB)", "vivo", 1],
+      ["vivo T5 5G (Royal Bronze, 256 GB)", "vivo", 0],
+      ["vivo T5x 5G (Cyber Green, 6GB RAM, 128GB Storage) | 50MP AI Dual Camera | 32MP Selfie | 6.76\" FHD+ Display | 7200mAh Battery | Dimensity 7400-Turbo Processor | Fast Charging | Dual SIM Smartphone", "vivo", 0],
+      ["vivo T5x 5G (Cosmic Green, 6GB RAM, 128GB Storage)", "vivo", 0],
+      ["vivo T5 Lite 44W 5G (Wave Blue, 6GB RAM, 128GB Storage) | MediaTek Dimensity 6300 5G Processor | 50MP AI Dual Rear Camera | 5MP Front Camera | 6.74-inch Display | 6500mAh Battery |", "vivo", 0]
+    ]}
+  ]
+}

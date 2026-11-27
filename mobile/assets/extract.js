@@ -257,6 +257,21 @@
     }
     return false;
   }
+  // Scroll down the page in screen-sized steps (as a person would), then back up.
+  async function scrollThrough() {
+    var last = -1;
+    for (var i = 0; i < 14; i++) {
+      window.scrollBy(0, Math.max(400, window.innerHeight * 0.9));
+      window.dispatchEvent(new Event('scroll'));
+      await sleep(120);
+      var y = Math.round(window.scrollY);
+      if (y === last) break;
+      last = y;
+    }
+    await sleep(400);
+    window.scrollTo(0, 0);
+  }
+
   async function scrollMore(cfg) {
     var cards = els(document, cfg.review.card), before = cards.length;
     if (cards.length) cards[cards.length - 1].scrollIntoView();
@@ -297,6 +312,8 @@
     try {
       var b = blocked(cfg || {});
       if (action === 'extract') {
+        // Some stores only draw review cards once they scroll into view.
+        if (!b && opts && opts.scroll) await scrollThrough();
         result = b ? { blocked: b, url: location.href } :
           { blocked: null, url: location.href, meta: opts && opts.meta ? meta(cfg) : null, reviews: reviews(cfg) };
       } else if (action === 'sort') {

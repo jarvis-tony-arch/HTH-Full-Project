@@ -97,7 +97,7 @@ class AnalysisJob extends ChangeNotifier {
       }
     });
     final mainSrc = SourceReviews(link!);
-    final mainDone = _collect(mainSrc, budget: const Duration(seconds: 35));
+    final mainDone = _collect(mainSrc, budget: const Duration(seconds: 35), interactive: true);
 
     // As soon as the product page tells us what this is, look elsewhere.
     while (!_disposed && (mainSrc.meta?.title ?? '').isEmpty && mainSrc.state != SourceState.done &&
@@ -130,7 +130,7 @@ class AnalysisJob extends ChangeNotifier {
     await analyse();
   }
 
-  Future<void> _collect(SourceReviews s, {Duration budget = const Duration(seconds: 25)}) {
+  Future<void> _collect(SourceReviews s, {Duration budget = const Duration(seconds: 25), bool interactive = false}) {
     final pc = _cfg?.platform(s.platform);
     sources.add(s);
     if (pc == null) {
@@ -145,6 +145,7 @@ class AnalysisJob extends ChangeNotifier {
       reader: reader,
       cfg: pc,
       budget: budget,
+      interactive: interactive,
       onProgress: _changed,
       onNeedsUser: (h) {
         handoffs.add(h);

@@ -62,7 +62,12 @@ class SourceCollector {
     required this.onNeedsUser,
     this.target = 150,
     this.budget = const Duration(seconds: 40),
+    this.interactive = true,
   });
+
+  /// Only the shop the user shared from may show them a sign-in or check
+  /// page. Matched shops on other sites never interrupt; they just note it.
+  final bool interactive;
 
   final _clock = Stopwatch();
   bool _stopped = false;
@@ -97,8 +102,8 @@ class SourceCollector {
   }
 
   /// Returns null when the user chose to skip.
-  Future<Map<String, dynamic>?> _extract({bool meta = false}) async {
-    var r = await reader.call('extract', cfg, opts: {'meta': meta});
+  Future<Map<String, dynamic>?> _extract({bool meta = false, bool scroll = false}) async {
+    var r = await reader.call('extract', cfg, opts: {'meta': meta, 'scroll': scroll});
     if (r == null && !_stopped) {
       // Slow page (busy main thread): give it a moment and try once more.
       await Future<void>.delayed(const Duration(seconds: 2));
@@ -113,6 +118,14 @@ class SourceCollector {
   }
 
   Future<bool> _askUser(String reason) async {
+    if (!interactive) {
+      source.state = SourceState.skipped;
+      source.note = reason.contains('signin') || reason.contains('login')
+          ? '${source.link.platform.label} needs sign-in for more reviews, so only the first ones were read'
+          : '${source.link.platform.label} showed a check page, so only some reviews were read';
+      onProgress();
+      return false;
+    }
     _clock.stop();
     final h = Handoff(source, reader, reason);
     source.state = SourceState.needsUser;
@@ -184,8 +197,19 @@ class SourceCollector {
   Future<void> _pagesMode() async {
     // 1. Product page: identity, overall rating, and the top reviews.
     await reader.load(Uri.parse(fillUrl(cfg['product_url'] as String, source.link)));
-    final first = await _extract(meta: true);
+    var first = await _extract(meta: true);
     if (first == null) return;
+    // Product details (JSON-LD, price) can appear after "page finished":
+    // if the title or price is missing, look again before moving on.
+    for (var tries = 0; tries < 2; tries++) {
+      final m = first?['meta'] as Map?;
+      if (m != null && (m['title'] ?? '').toString().isNotEmpty && m['price'] != null) break;
+      await Future<void>.delayed(const Duration(milliseconds: 1500));
+      final again = await _extract(meta: true);
+      if (again == null) break;
+      first = again;
+    }
+    first = first!;
     debugPrint('HTH product page ${source.platform} url=${reader.currentUrl} title=${(first['meta'] as Map?)?['title']} reviews=${(first['reviews'] as List?)?.length}');
     _take(first);
 
@@ -194,11 +218,18 @@ class SourceCollector {
     var emptyInARow = 0;
     for (var page = 1; page <= maxPages && !_stopped && !_enough && !_outOfTime; page++) {
       final loaded = await reader.load(Uri.parse(fillUrl(cfg['reviews_url'] as String, source.link, page: page)));
-      var r = await _extract(meta: page == 1);
-      // Single-page apps render reviews after "page finished": look again.
-      for (var tries = 0; tries < 2 && r != null && r['blocked'] == null && ((r['reviews'] as List?)?.isEmpty ?? true); tries++) {
-        await Future<void>.delayed(const Duration(milliseconds: 1800));
-        r = await _extract(meta: page == 1);
+      var r = await _extract(meta: page == 1, scroll: cfg['scroll_before_extract'] == true);
+      // Single-page apps keep rendering reviews after "page finished".
+      // Re-read until the count stops growing, so a half-drawn page
+      // (2 of 10 reviews) isn't taken as the whole page.
+      for (var tries = 0; tries < 4 && r != null && r['blocked'] == null; tries++) {
+        final before = (r['reviews'] as List?)?.length ?? 0;
+        await Future<void>.delayed(Duration(milliseconds: before == 0 ? 1800 : 1200));
+        final again = await _extract(meta: page == 1);
+        if (again == null) break;
+        final after = (again['reviews'] as List?)?.length ?? 0;
+        if (after >= before) r = again;
+        if (after == before && before > 0) break; // stable
       }
       debugPrint('HTH page ${source.platform} p$page loaded=$loaded t=${_clock.elapsed.inSeconds}s blocked=${r?['blocked']} n=${(r?['reviews'] as List?)?.length} url=${reader.currentUrl}');
       if (r == null) return;

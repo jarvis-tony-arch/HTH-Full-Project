@@ -64,16 +64,26 @@ Run from `backend/`: `venv\Scripts\python -m pytest tests -q` and `venv\Scripts\
 
 | What | Data | Result |
 |---|---|---|
-| Unit tests per analyser function, matcher and endpoints' logic | written test sentences | 41 passed |
+| Unit tests per analyser function, matcher, source hygiene | written test sentences + real data | 47 passed |
 | Golden tests | 2 real products collected by the app (Myntra T-shirt 141 reviews, Flipkart earbuds 81) | verdicts, trust flag and size card as expected; every quote checked to be a real excerpt |
-| Product matching | 10 labelled real listing-title pairs (5 same, 5 different: generation, storage, model number, look-alike brand) | precision 1.00, recall 1.00. Small set and the rules were tuned on it: a sanity check, not a measured accuracy |
+| Product matching, tuning set | 46 real Amazon/Flipkart title pairs, 9 products (`tests/data/match_pairs.json`): variants, storage, accessories, look-alike brands, bundles | before fixes: precision 0.78 (2 wrong merges); after: precision 1.00, recall 1.00 (rules were tuned on this set) |
+| Product matching, **held-out set** | 37 real pairs, 7 other products (`tests/data/match_pairs_holdout.json`) | **blind run: precision 1.00, recall 0.25** (no wrong merges, but 6 of 8 true matches were asked about instead of matched); after recall fixes: precision 1.00, recall 0.75 (no longer blind). Remaining misses are a laptop and a power bank whose titles lack a model number: the app asks "Is this the same product?" |
 | Review sentiment | 218 real reviews with 1-2★ or 4-5★, star rating as the label | positive F1 0.98, negative F1 0.84 (only ~20 negative reviews) |
 | Aspects, "not as shown" | `eval/labelling_sheet.csv`: 234 real reviews with empty label columns | **not measured yet**: needs human labels. Fill it in, save as `eval/labels.csv`, re-run `eval.evaluate` |
 | Transformer baseline | — | not done |
+
+## Fail-safe rules (no silent errors)
+
+- A match is only merged when brand, model number, version (Pro/Plus/FE/Ultra/Lite…), storage/RAM and specs all agree. Accessories, spare parts, look-alike brands and different versions are rejected; bundles ("with AppleCare") and titles without a model number become "Is this the same product?".
+- "Cheapest" is only shown when at least two shops have a price; equal prices are shown as "Same price".
+- Only the shop you shared from may show you a sign-in page; matched shops never interrupt and say what they couldn't read.
+- Pages are re-read until the review count stops changing; Flipkart pages are scrolled through first because cards are drawn lazily.
+- Below 15 reviews there is no verdict; thin or mixed data lowers the stated confidence.
 
 ## Known limits
 
 - Amazon's full review pages need sign-in; without it only the ~8 product-page reviews are available.
 - AJIO, Nykaa and Croma: listings are matched and their rating/price shown, but their reviews aren't read yet. Reliance Digital search is disabled (selectors couldn't be verified).
 - Shop layouts change; fix `review_selectors.json` and bump `version` (no new APK needed).
-- Flipkart pages are slow on the emulator and sometimes time out; the app keeps going with what it has and says so.
+- Flipkart pages are slow on the emulator (about 20 reviews in 50 s while another shop is read at the same time); the app keeps going with what it has and says so. Not yet measured on a real phone.
+- 100% accuracy isn't possible for live pages and free-text reviews; the aim is that every uncertain case is shown as uncertain.

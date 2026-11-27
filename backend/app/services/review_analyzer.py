@@ -261,7 +261,7 @@ NOT_AS_SHOWN = {
         r"(different|wrong)\s+colou?r", r"colou?r\s+(does\s*n.?t|did\s*n.?t|not)\s+match",
         r"colou?r\s+not\s+as\s+(shown|in\s+(the\s+)?(picture|image|photo))", r"rang\s+(alag|different|halka)",
         r"in\s+(the\s+)?(given\s+)?(picture|image|photo|pic)\s+(the\s+)?colou?r\s+looks?",
-        r"(in\s+real(ity)?|actual(ly)?)[^.]{0,30}(looks?|is)\s+(much\s+|very\s+|bit\s+)?(faded|dull|different|lighter|darker)",
+        r"(in\s+real(ity)?|actual(ly)?)\b[^.]{0,30}\b(looks?|is)\s+(much\s+|very\s+|bit\s+)?(faded|dull|different|lighter|darker)",
     ],
     "size": [
         r"size\s+(chart\s+)?(is\s+|was\s+)?(wrong|incorrect|misleading|not\s+(accurate|correct|proper))",
@@ -512,8 +512,13 @@ def cross_platform(reviews: list[dict], sources: list[dict], listings: list[dict
                    "text": f"{rating_of(hi)}★ on {hi['label']} vs {rating_of(lo)}★ on {lo['label']}",
                    "likely_reasons": why[:3] or ["The reviews we read don't show a clear reason"]}
 
+    # "Cheapest" only means something when at least two shops show a price.
     priced = [s for s in shops if s.get("price")]
-    cheapest = min(priced, key=lambda s: s["price"]) if priced else None
+    cheapest = None
+    if len(priced) >= 2:
+        low = min(s["price"] for s in priced)
+        tied = [s for s in priced if s["price"] == low]
+        cheapest = {**tied[0], "tied_with": [s["label"] for s in tied[1:]]}
 
     independent = _independent(opinions, reviews)
     return {"shops": shops, "gap": gap, "cheapest": cheapest, "independent": independent}

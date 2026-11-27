@@ -207,3 +207,16 @@ def test_golden(name, expect):
     texts = " ".join(texts.split())
     for q in r["quotes"]:
         assert q["text"].rstrip("…")[:40] in texts
+
+
+def test_cheapest_needs_two_prices():
+    out, _ = ra.clean_reviews([{"platform": "amazon", "reviews": [R("Good phone overall", 5)]}])
+    xp = ra.cross_platform(out, [{"platform": "amazon", "meta": {"price": 39999}},
+                                 {"platform": "flipkart", "meta": {"price": None}}], [], None, {}, {})
+    assert xp["cheapest"] is None
+
+
+def test_cheapest_reports_ties():
+    xp = ra.cross_platform([], [{"platform": "amazon", "meta": {"price": 39999}},
+                                {"platform": "flipkart", "meta": {"price": 39999}}], [], None, {}, {})
+    assert xp["cheapest"]["tied_with"] == ["Flipkart"]

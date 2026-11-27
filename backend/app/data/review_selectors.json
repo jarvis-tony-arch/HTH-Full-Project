@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 5,
   "updated": "2026-11-27",
   "platforms": {
     "amazon": {
@@ -68,7 +68,8 @@
         "author_suffix": "^,\\s",
         "stop": "^(Helpful|Verified Purchase|Certified Buyer|Report Abuse|READ MORE|\\d+)$"
       },
-      "histogram_text": "(?:^|\\n)([1-5])\\n★\\n([\\d,]+)"
+      "histogram_text": "(?:^|\\n)([1-5])\\n★\\n([\\d,]+)",
+      "scroll_before_extract": true
     },
     "myntra": {
       "product_url": "https://www.myntra.com/{id}",
@@ -125,7 +126,7 @@
       "price": ".a-price .a-offscreen",
       "rating": ".a-icon-alt",
       "image": "img.s-image@src",
-      "skip_text": "^Sponsored",
+      "skip_text": "^(Sponsored\\s*)+(You are seeing this ad[^.]*\\.\\s*Let us know\\s*)?",
       "verified": "2026-11-27"
     },
     "flipkart": {

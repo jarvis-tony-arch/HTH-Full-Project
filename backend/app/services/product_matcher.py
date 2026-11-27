@@ -35,10 +35,10 @@ _COLOURS = {
 }
 _GENERATION = re.compile(r"\b(gen|generation|mark|mk|series|version|v)\s*\.?\s*(\d+)\b", re.I)
 _SPEC = re.compile(
-    r"\b(\d+(?:\.\d+)?)\s*(gb|tb|mah|ml|l|ltr|litre|liter|kg|g|gm|w|watt|hz|inch|in|cm|mm|hours?|hrs?|h)\b",
+    r"\b(\d+(?:\.\d+)?)\s*(gb|tb|mah|ml|l|ltr|litre|liter|kg|g|gm|w|watt|hz|inch|in|cm|mm|hours?|hrs?|h|jars?)\b",
     re.I,
 )
-_SPEC_UNIT = {"ltr": "l", "litre": "l", "liter": "l", "gm": "g", "watt": "w", "in": "inch",
+_SPEC_UNIT = {"jar": "jars", "ltr": "l", "litre": "l", "liter": "l", "gm": "g", "watt": "w", "in": "inch",
               "hour": "h", "hours": "h", "hr": "h", "hrs": "h"}
 # Sizes for clothes / shoes
 _SIZE = re.compile(r"\b(xxs|xs|s|m|l|xl|xxl|xxxl|[2-5]xl|uk\s?\d{1,2}|size\s?\d{1,2})\b", re.I)
@@ -56,6 +56,53 @@ def words(text: str) -> list[str]:
     return [w for w in normalise(text).replace("-", " ").split() if w not in _NOISE]
 
 
+# Words that turn one model into another: "iPhone 15" vs "iPhone 15 Plus".
+_QUALIFIERS = {"pro", "plus", "ultra", "fe", "lite", "max", "mini", "neo", "prime", "elite", "edge", "air", "anc", "ace"}
+# A number followed by one of these is a spec, not a model number ("10 length settings").
+_NOT_MODEL_NEXT = {"min", "mins", "minutes", "length", "settings", "setting", "hours", "hrs", "hour", "mics", "mic",
+                   "jars", "jar", "speed", "speeds", "months", "month", "years", "year", "yrs", "pack", "pcs", "pieces",
+                   "days", "modes", "mode", "drivers", "combs", "comb", "attachments", "in", "x", "inch", "cm", "mm",
+                   "nits", "rpm", "litre", "liters", "l", "kg", "ml", "w", "watt", "percent", "off"}
+_ACCESSORY = re.compile(
+    r"\b(case|cover|back cover|flip cover|screen guard|tempered glass|screen protector|protector|skin|pouch|"
+    r"charger|charging cable|cable|adapter|strap|band for|replacement|spare|back panel|housing|full panel|"
+    r"display combo|digitizer|battery for|compatible with|for (?:apple|samsung|oneplus|redmi|xiaomi|vivo|oppo|realme|iphone))\b",
+    re.I)
+_BUNDLE = re.compile(r"\b(with protect\+?|applecare|combo|pack of \d+|bundle|with (?:case|cover|charger))", re.I)
+
+
+def model_zone(text: str) -> str:
+    """The part of a title that names the product: before the first
+    "(", "|", ",", ":", " - " or " with ". Marketing text comes after."""
+    t = (text or "").replace("™", " ").replace("®", " ")
+    return re.split(r"\(|\||,|:|;| - | – |\bwith\b|\bfeaturing\b", t, maxsplit=1, flags=re.I)[0]
+
+
+def qualifiers(text: str) -> set[str]:
+    z = normalise(model_zone(text)).replace("+", " plus ").replace("-", " ")
+    out: set[str] = set()
+    for t in z.split():
+        if t in _QUALIFIERS:
+            out.add(t)
+            continue
+        m = re.fullmatch(r"(pro|ultra|max|lite|mini|plus|fe|neo)(\d+)", t)
+        if m:
+            out.add(m.group(1))
+            continue
+        m = re.fullmatch(r"\d{1,3}([a-z])", t)  # "16e", "6r", "13s", "4i" ("5g" is the network)
+        if m and m.group(1) not in {"g", "k", "w", "h", "l", "v", "a", "m"}:
+            out.add("sfx_" + m.group(1))
+            continue
+        m = re.fullmatch(r"[a-z]{1,3}\d{1,3}([a-z])", t)  # "T5x", "A15s"
+        if m and m.group(1) not in {"g", "k", "w", "h"}:
+            out.add("sfx_" + m.group(1))
+    return out
+
+
+def is_accessory(text: str) -> bool:
+    return bool(_ACCESSORY.search(text or ""))
+
+
 def model_codes(text: str) -> set[str]:
     """Things that look like model numbers, in one canonical form.
 
@@ -66,14 +113,24 @@ def model_codes(text: str) -> set[str]:
     for m in _GENERATION.finditer(t):
         codes.add(f"gen{m.group(2)}")
     t_wo_specs = _SPEC.sub(" ", _NETWORK.sub(" ", _GENERATION.sub(" ", t)))
-    toks = t_wo_specs.replace("-", " ").split()
+    t_wo_specs = re.sub(r"\b(pro|ultra|max|lite|mini|plus|neo)(\d+)\b", r"\1 \2", t_wo_specs)
+    toks = t_wo_specs.replace("-", " ").replace("/", " ").split()
     for i, w in enumerate(toks):
-        if re.fullmatch(r"[a-z]+\d+[a-z0-9]*|\d+[a-z]+[a-z0-9]*", w) and len(w) >= 3:
+        nxt = toks[i + 1] if i + 1 < len(toks) else ""
+        prev = toks[i - 1] if i > 0 else ""
+        glue_ok = bool(re.fullmatch(r"[a-z]{2,}", prev)) and prev not in _NOISE | _NOT_MODEL_NEXT
+        if re.fullmatch(r"[a-z]+\d+[a-z0-9]*|\d+[a-z]+[a-z0-9]*", w) and len(w) >= 2:
             codes.add(w)
-        elif re.fullmatch(r"\d{2,5}", w):
-            codes.add(w)
-            if i > 0 and re.fullmatch(r"[a-z]{3,}", toks[i - 1]) and toks[i - 1] not in _NOISE:
-                codes.add(toks[i - 1] + w)  # "airdopes 141" -> "airdopes141"
+            m = re.fullmatch(r"(\d{2,5})([a-z]{1,3})", w)  # "16e", "520bt" -> also "16", "520"
+            if m:
+                codes.add(m.group(1))
+                if glue_ok:
+                    codes.add(prev + m.group(1))
+        elif re.fullmatch(r"\d{1,5}", w) and nxt not in _NOT_MODEL_NEXT:
+            if len(w) >= 2:
+                codes.add(w)
+            if glue_ok:
+                codes.add(prev + w)  # "airdopes 141" -> "airdopes141"
     # glued forms: "airdopes141" also implies "141"
     for c in list(codes):
         m = re.fullmatch(r"([a-z]{3,})(\d{2,5})", c)
@@ -82,7 +139,7 @@ def model_codes(text: str) -> set[str]:
     return codes
 
 
-_NETWORK = re.compile(r"[2345]g")  # "5G" phones, not 5 grams
+_NETWORK = re.compile(r"\b[2345]g\b")  # "5G" phones, not 5 grams
 
 
 def specs(text: str) -> dict[str, set[str]]:
@@ -98,6 +155,15 @@ def colours(text: str) -> set[str]:
     return {w for w in words(text) if w in _COLOURS}
 
 
+# Same maker, different spellings on different shops.
+_BRAND_ALIASES = {"mi": "xiaomi", "xiaomi": "xiaomi", "1+": "oneplus", "one plus": "oneplus", "boat": "boat",
+                  "hp": "hp", "hewlett packard": "hp", "lg electronics": "lg", "samsung electronics": "samsung"}
+
+
+def canon_brand(b: str) -> str:
+    return _BRAND_ALIASES.get(b, b)
+
+
 def brand_of(item: dict) -> str:
     b = normalise(item.get("brand") or "")
     b = re.sub(r"^(visit the|brand)\s+", "", b).replace(" store", "").strip()
@@ -109,7 +175,7 @@ def brand_of(item: dict) -> str:
 
 def _brand_score(a: dict, b: dict) -> tuple[float, str | None, bool]:
     """(score, reason, conflict)."""
-    ba, bb = brand_of(a), brand_of(b)
+    ba, bb = canon_brand(brand_of(a)), canon_brand(brand_of(b))
     if not ba or not bb:
         return 0.5, None, False
     title_b = normalise(b.get("title") or "")
@@ -122,9 +188,19 @@ def _brand_score(a: dict, b: dict) -> tuple[float, str | None, bool]:
 
 
 def _model_score(a: dict, b: dict) -> tuple[float, str | None, bool]:
-    ta = " ".join(filter(None, [a.get("title"), a.get("model")]))
-    tb = " ".join(filter(None, [b.get("title"), b.get("model")]))
-    ca, cb = model_codes(ta), model_codes(tb)
+    qa, qb = qualifiers(a.get("title") or ""), qualifiers(b.get("title") or "")
+    both_have_codes = bool(model_codes(model_zone(a.get("title") or ""))) and bool(model_codes(model_zone(b.get("title") or "")))
+    if qa != qb and both_have_codes:
+        def nice(q):
+            return ", ".join(sorted(x[4:].upper() if x.startswith("sfx_") else x.title() for x in q)) or "plain"
+        return 0.0, f"Different version ({nice(qa)} vs {nice(qb)})", True
+    za = " ".join(filter(None, [model_zone(a.get("title") or ""), a.get("model")]))
+    zb = " ".join(filter(None, [model_zone(b.get("title") or ""), b.get("model")]))
+    ca, cb = model_codes(za), model_codes(zb)
+    if not ca or not cb:
+        # Some titles put the model code at the end ("... | BT3325").
+        ca = ca or model_codes(" ".join(filter(None, [a.get("title"), a.get("model")])))
+        cb = cb or model_codes(" ".join(filter(None, [b.get("title"), b.get("model")])))
     if not ca or not cb:
         return 0.5, None, False
     shared = ca & cb
@@ -165,12 +241,23 @@ def _spec_score(a: dict, b: dict) -> tuple[float, list[str], bool]:
     common = set(sa) & set(sb)
     if not common:
         return 0.5, [], False
-    same = [u for u in common if sa[u] & sb[u]]
-    diff = [u for u in common if not (sa[u] & sb[u])]
+    def agree(u):
+        if u == "gb":
+            # Phones list RAM and storage: compare the biggest (storage) and,
+            # when both list RAM, the smallest too.
+            xa, xb = sorted(sa[u], key=float), sorted(sb[u], key=float)
+            if xa[-1] != xb[-1]:
+                return False
+            if len(xa) > 1 and len(xb) > 1 and xa[0] != xb[0]:
+                return False
+            return True
+        return bool(sa[u] & sb[u])
+    same = [u for u in common if agree(u)]
+    diff = [u for u in common if not agree(u)]
     fmt = lambda vals, u: "/".join(sorted(vals, key=lambda v: float(v))) + u
     reasons = []
     if same:
-        reasons.append("Same " + ", ".join(fmt(sa[u] & sb[u], u) for u in sorted(same)))
+        reasons.append("Same " + ", ".join(fmt(sa[u] & sb[u] or sa[u], u) for u in sorted(same)))
     if diff:
         reasons.append("Different " + ", ".join(f"{fmt(sa[u], u)} vs {fmt(sb[u], u)}" for u in sorted(diff)))
     # Battery hours differ a lot between listings of the same item, so they
@@ -214,7 +301,14 @@ def score_pair(product: dict, cand: dict, tfidf: float) -> dict:
     if ca and cb and not (ca & cb):
         reasons.append("Different colour (same product, other variant)")
 
-    conflict = bconf or mconf or sconf
+    acc = is_accessory(cand.get("title") or "") and not is_accessory(product.get("title") or "")
+    if acc:
+        reasons.insert(0, "Looks like an accessory or spare part, not the product itself")
+    bundle = bool(_BUNDLE.search(cand.get("title") or "")) != bool(_BUNDLE.search(product.get("title") or ""))
+    if bundle:
+        reasons.append("Sold as a bundle or with an extra plan")
+
+    conflict = bconf or mconf or sconf or acc
     if conflict:
         decision = NO_MATCH
         score = min(score, 0.35)
@@ -227,6 +321,8 @@ def score_pair(product: dict, cand: dict, tfidf: float) -> dict:
         decision = POSSIBLE
     else:
         decision = NO_MATCH
+    if bundle and decision == MATCH:
+        decision = POSSIBLE  # same product, different package: ask the user
     return {
         "decision": decision,
         "confidence": round(score, 3),

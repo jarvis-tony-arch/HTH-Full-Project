@@ -509,7 +509,9 @@ class _Platforms extends StatelessWidget {
           FilledButton.icon(
             onPressed: () => _open(context, cheapest['url'] as String?),
             icon: const Icon(Icons.local_offer_rounded),
-            label: Text('Cheapest: ₹${(cheapest['price'] as num).round()} on ${cheapest['label']}'),
+            label: Text(((cheapest['tied_with'] as List?) ?? const []).isEmpty
+                ? 'Cheapest: ₹${(cheapest['price'] as num).round()} on ${cheapest['label']}'
+                : 'Same price ₹${(cheapest['price'] as num).round()} on ${cheapest['label']} and ${(cheapest['tied_with'] as List).join(', ')}'),
           ),
         ],
       ]),

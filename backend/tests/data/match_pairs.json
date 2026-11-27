@@ -1,0 +1,69 @@
+{
+  "about": "Real listing titles from Amazon.in and Flipkart search results, 2026-11-27 (Sponsored prefixes removed, brand separated from title as the app's reader does). Labels are a human judgement from the titles: 1 = same product (colour may differ), 0 = different model, storage, pack size, accessory or look-alike brand. Please review the labels.",
+  "groups": [
+    {"ref": {"title": "Samsung Galaxy S24 FE 5G (Blue, 128 GB)", "brand": "Samsung"}, "cands": [
+      ["Samsung Galaxy S24 FE 5G AI Smartphone (Blue, 8GB RAM, 128GB Storage)", "Samsung", 1],
+      ["Samsung Galaxy S24 FE 5G AI Smartphone (Graphite, 8GB RAM, 128GB Storage)", "Samsung", 1],
+      ["Samsung Galaxy S24 FE 5G (Graphite, 8GB RAM, 256GB Storage) | Exynos 2400e Processor | Dynamic AMOLED Display | Dual Nano-SIM | 4700mAh Battery", "Samsung", 0],
+      ["Samsung Galaxy S25 FE 5G Smartphone with Galaxy AI (JetBlack, 8GB RAM, 128GB Storage), 12MP Front Camera, ProVisual Engine, Long Battery Life", "Samsung", 0],
+      ["Samsung Galaxy S25 Ultra 5G AI Smartphone (Titanium Gray, 12GB RAM, 256GB Storage), 200MP Camera, 5000mAh Ultra Long Battery, QHD+ Dynamic AMOLED 2X, Galaxy AI, Knox Security, S Pen Included", "Samsung", 0],
+      ["OnePlus Nord CE6 Lite | 8GB+128GB | Vivid Mint | Segment's Fastest Dimensity 7400 Apex Processor | 7000mAh Battery | Segment's Highest 144Hz Refresh Rate | 50MP Main Camera, 4K Video Recording", "OnePlus", 0],
+      ["OnePlus 13s | Snapdragon® 8 Elite | Smarter with OnePlus AI | Lifetime Display Warranty | 16GB+512GB | Green Silk", "OnePlus", 0]
+    ]},
+    {"ref": {"title": "Apple iPhone 15 (Blue, 128 GB)", "brand": "Apple"}, "cands": [
+      ["Apple iPhone 15 (Black, 128 GB)", "Apple", 1],
+      ["Apple iPhone 15 Plus (Black, 128 GB)", "Apple", 0],
+      ["Apple iPhone 15 (256 GB) - Blue with Protect+ with AppleCare Services", "Apple", 0],
+      ["Apple iPhone 16 128 GB: 5G Mobile Phone with Camera Control, A18 Chip and a Big Boost in Battery Life. Works with AirPods; Teal", "Apple", 0],
+      ["Apple iPhone 16e 128 GB: Built for Apple Intelligence, A18 Chip, Supersized Battery Life, 48MP Fusion. Camera, 15.40 cm (6.1″) Super Retina XDR Display; Black", "Apple", 0],
+      ["Apple iPhone 17e 256 GB: 15.40 cm (6.1″) Super Retina XDR Display, A19 Chip, All-Day Battery Life, 48MP Fusion Camera, 256GB Starting Storage; Black", "Apple", 0],
+      ["Compatible with iPhone 15 – Original-Quality OLED Screen with Touch Digitizer", "", 0]
+    ]},
+    {"ref": {"title": "REDMI Note-14 Pro 5G (Ivy Green, 128 GB)", "brand": "REDMI"}, "cands": [
+      ["Redmi Note 14 Pro 5G Titan Black 8GB RAM 128GB ROM(Without Offer)", "Redmi", 1],
+      ["Redmi Note 14 Pro 5G (Titan Black, 8GB RAM+ 256GB Storage) | Mediatek Dimensity 7300 Ultra Processor | AMOLED Display | Dual Nano-SIM | 5500mAh Battery", "Redmi", 0],
+      ["Redmi Note 14 Pro+ 5G (Phantom Purple, 8GB RAM, 128GB Storage) | Snapdragon 7s Gen 3 Processor | AMOLED Display | Dual Nano-SIM | 6200mAh Battery | Corning Gorilla Glass Victus 2", "Redmi", 0],
+      ["Radmi Note 14 Pro+ 5G (Spectre Blue, 8GB RAM+ 256GB Storage) | Snapdragon 7s Gen 3 Processor | AMOLED Display | Dual Nano-SIM | 6200mAh Battery", "Radmi", 0],
+      ["REDMI Note-14 Pro+ 5G (Spectre Blue, 256 GB)", "REDMI", 0]
+    ]},
+    {"ref": {"title": "OnePlus Nord CE6 Lite | 8GB+128GB | Vivid Mint | Segment's Fastest Dimensity 7400 Apex Processor | 7000mAh Battery | Segment's Highest 144Hz Refresh Rate | 50MP Main Camera, 4K Video Recording", "brand": "OnePlus"}, "cands": [
+      ["OnePlus Nord CE6 Lite | 8GB+128GB | Hyper Black | Segment's Fastest Dimensity 7400 Apex Processor | 7000mAh Battery | Segment's Highest 144Hz Refresh Rate | 50MP Main Camera, 4K Video Recording", "OnePlus", 1],
+      ["OnePlus Nord CE6 Lite | 8GB+256GB | Hyper Black | Segment's Fastest Dimensity 7400 Apex Processor | 7000mAh Battery | Segment's Highest 144Hz Refresh Rate | 50MP Main Camera, 4K Video Recording", "OnePlus", 0],
+      ["OnePlus N6 Lite 4G | 4GB+64GB | Midnight Hype | Massive 7000mAh Long-Lasting Battery | 120Hz Ultra Smooth Display | 36 Months Fast & Smooth | Military-Grade Durability", "OnePlus", 0],
+      ["Spigen Essential Sand Blast Case for OnePlus Nord CE 4 Lite 5G, Matte Black Flexible, Shockproof, Optimal Grip, Air Cushion Technology Protection, Slim Fit, Thermoplastic Polyurethane, Matte", "Spigen", 0],
+      ["SPAREWARE ONEPLUS Oneplus Nord CE 4 Lite -Grey (WITH CAMERA LENS & HEAT & SINK GASKET) Back Panel", "SPAREWARE", 0]
+    ]},
+    {"ref": {"title": "boAt Airdopes 141 Gen 2, 4 Mics ENx Tech,48H Battery,ASAP Charge,Low Latency,BT v5.4 Bluetooth", "brand": "boAt"}, "cands": [
+      ["boAt 2026 Launch Airdopes 141, Up to 50 Hours Playtime, Quad Mic ENx™ Tech, Dual EQ Modes, 13mm Drivers, BEAST™ Mode, ASAP™ Charge, IWP™ Technology, BT v5.3, IPX4 Resistant TWS Earbuds(Matte Charcoal)", "boAt", 0],
+      ["boAt Airdopes 141 Elite ANC Bluetooth", "boAt", 0],
+      ["boAt Airdopes 219, 4Mics ENx, 40H Battery, Best in Segment for Calling, App Support, Bluetooth Earbuds, TWS Ear Buds Wireless Earphones with mic (Carbon Black)", "boAt", 0],
+      ["boAt 2026 Launch Airdopes Prime 800D, Surround Sound by Dolby Audio, 45H Battery, Quad Mic AI-ENx™, 11mm Drivers, ASAP™ Charge,App Support Wireless Bluetooth TWS Earbuds with mic(Swedish White)", "boAt", 0],
+      ["bAot Premium EarBuds with 60 Hours Playtime & Fast Charging with Deep Bass/Pure Sound Bluetooth", "bAot", 0],
+      ["Noise Buds Mini X Truly Wireless Earbuds (2026) | Half in-Ear Design | 50H Playtime |12mm Titanium-Coated Drivers | Quad Mic ENC for Clear Calls| Dual Pairing | BTv6.0 | IPX4 - [Ice Blue]", "Noise", 0]
+    ]},
+    {"ref": {"title": "boAt 2026 Launch Airdopes 141, Up to 50 Hours Playtime, Quad Mic ENx™ Tech, Dual EQ Modes, 13mm Drivers, BEAST™ Mode, ASAP™ Charge, IWP™ Technology, BT v5.3, IPX4 Resistant TWS Earbuds(Matte Charcoal)", "brand": "boAt"}, "cands": [
+      ["boAt 2026 Launch Airdopes 141, Up to 50 Hours Playtime, Quad Mics ENx™ Tech, Dual EQ Modes, 13mm Drivers, Beast™ Mode, ASAP™ Charge, IWP™ Technology, BT v5.3, IPX4 Resistant TWS Earbuds (Cyber Mint)", "boAt", 1]
+    ]},
+    {"ref": {"title": "Noise ColorFit Pro4 Bluetooth Calling with 1.72'' TruView Display and Functional Crown Smartwatch", "brand": "Noise"}, "cands": [
+      ["Noise New Launch ColorFit Ultra 4 Smartwatch with BT Calling, 1.96\" AMOLED Always-On Display, AI Transcription & Voice Commands, Metal Body, 10m Water Resistant, Heart Rate Monitor (Jet Black)", "Noise", 0],
+      ["Noise ColorFit Pro 3 Smartwatch", "Noise", 0],
+      ["Noise Pro 6 Smart Watch:Intelligent AI, Endless AI Watch Faces, AI Companion, 1.85” AMOLED, EN2 Processor, Nebula UI 2.0, Emergency SOS, Compatible with iOS & Android(Ivory Gold)", "Noise", 0],
+      ["Noise Pro 6R 1.46\" AMOLED Smart Watch, 1000 NITS, Powered by AI Pro, Built-in GPS, Strava Integration, Stainless Steel Dial, Video Watch Faces, 3ATM, Emergency SOS, TWS Connectivity (Classic Black)", "Noise", 0]
+    ]},
+    {"ref": {"title": "PHILIPS BT3201 Trimmer 30 min  Runtime 10 Length Settings", "brand": "PHILIPS"}, "cands": [
+      ["PHILIPS Beard Trimmer BT3201/15 Trimmer 30 min  Runtime 11 Length Settings", "PHILIPS", 1],
+      ["PHILIPS BT3201, 30 min of cordless use Trimmer 30 min  Runtime 10 Length Settings", "PHILIPS", 1],
+      ["PHILIPS India's No.1 Men's Trimmer* | Lift & Trim Technology | Skin Friendly Beard Trimmer for Men | Effortless Styling | Self-Sharpening Blades | 60 mins runtime | 3 yrs warranty* | BT3325", "PHILIPS", 0],
+      ["PHILIPS India's No.1 Men's Trimmer* | Engineered for skin safe grooming | Skin protect technology- Self sharpening rounded tip blades | All-in-One Grooming Kit- Beard, Hair, Nose, Body, Eyebrow | 60 min runtime | 2yr warranty* | MG3927", "PHILIPS", 0],
+      ["Havells Beard & Hair 7 in 1 Trimmer |2-in-1 Special Blade| Comes with 4 Beard & 2 Hair Combs|Type C Turbo Charge|No Nicks & Cuts|2 Year Guarantee|BT4001", "Havells", 0]
+    ]},
+    {"ref": {"title": "Prestige Iris 750 Watt 3 Jar Mixer Grinder | 3 Stainless Steel Multipurpose Jars| Black", "brand": "Prestige"}, "cands": [
+      ["Prestige Iris 750 Watt Mixer Grinder with 4 Jars (3 Stainless Steel + 1 Juicer) | Super Efficient SS Blades | Black | 2Y Warranty | ISI Certified", "Prestige", 0],
+      ["Prestige Elliot 750 Watt 3 Jar Mixer Grinder | Hybrid Copper Motor | 3 Speed Control with Pulse Function | 3 Stainless Steel Jars| Sturdy Ergonomic Handles| 2Y Warranty | ISI Certified", "Prestige", 0],
+      ["Prestige Astra 750 Watt Mixer Grinder with 5 Jars (3 Stainless Steel + 1 Juicer + 1 Mix-O-Keep) | Space-Saving Stacking Design | Blue | 2Y Warranty | ISI Certified", "Prestige", 0],
+      ["Prestige Apex 500 Watt Mixer Grinder with 3 Stainless Steel Jars | Super Efficient SS Blades | Black | 2Y Warranty | ISI Certified", "Prestige", 0],
+      ["Preethi Blue Leaf Diamond Mixer Grinder, 750 Watt 3 Jars + Flexi Lid, Black With Flexi lid, Stainless Steel jars and blades, for Perfect wet, dry and chutney Grinding across different batch sizes", "Preethi", 0],
+      ["Prestige Plus 750 W Juicer Mixer Grinder", "Prestige", 0]
+    ]}
+  ]
+}
